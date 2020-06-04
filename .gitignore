@@ -3,3 +3,9 @@
 composer.json
 license.txt
 readme.rst
+/application/cache/
+/application/core/
+/application/helpers/
+/application/libraries/
+/application/logs/
+/application/third_party/
