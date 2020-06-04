@@ -1,0 +1,114 @@
+<?php
+
+class Coba_Model extends CI_Model {
+    //variabel untuk keperluan pagination jquery datatable
+    var $column_order = [null, 'kode', 'nama', 'bobot', 'normalisasi', null];
+    var $column_search = ['kode', 'nama', 'bobot', 'normalisasi'];
+    var $order = ['kode' => 'asc'];
+
+    
+    // PAGINATION USING JQUERY DATA TABLES
+    private function _get_datatables_query () {
+        $this->db->from('tblcoba');
+        
+        $i = 0;
+        foreach ($this->column_search as $item) {
+            if ($this->input->post('search')['value']) {
+                if ($i == 0) {
+                    $this->db->group_start();
+                    $this->db->like($item, $this->input->post('search')['value']);
+                } else {
+                    $this->db->or_like($item, $this->input->post('search')['value']);
+                }
+
+                if (count($this->column_search) - 1 == $i)
+                    $this->db->group_end();
+            }
+
+            $i++;
+        }
+
+        if ($this->input->post('order')) {
+            $this->db->order_by($this->column_order[$this->input->post('order')[0]['column']], $this->input->post('order')[0]['dir']);
+        } else if (isset($this->order)) {
+            $order = $this->order;
+            $this->db->order_by(key($order), $order[key($order)]);
+        }
+    }
+
+    public function getDataTables () {
+        $this->_get_datatables_query();
+        if ($this->input->post('length') != 1) {
+            $this->db->limit($this->input->post('length'), $this->input->post('start'));
+            return $this->db->get()->result();
+        }
+    }
+
+    public function countFiltered () {
+        $this->_get_datatables_query();
+        return $this->db->get()->num_rows();
+    }
+
+    public function countAll () {
+        $this->db->from('tblcoba');
+        return $this->db->count_all_results();
+    }
+
+    public function getKriteriaById ($kode) {
+        $this->db->from('tblcoba');
+        $this->db->where('kode', $kode);
+        $query = $this->db->get();
+
+        return $query->row();
+    }
+
+    // Normalisasi (success)
+    public function hitungNormalisasi () {
+        $this->db->select_sum('bobot');
+        $totalBobot = $this->db->get('tblcoba')->row_array();
+
+        $this->db->select('bobot, kode');
+        $bobot = $this->db->get('tblcoba')->result_array();
+
+        foreach ($bobot as $b) {
+           foreach ($totalBobot as $t) {
+
+                $hitung = round($b['bobot'] / $t, 5);
+                
+                $data = [
+                    'normalisasi' => $hitung
+                ];
+                
+                $this->db->where('kode', $b['kode']);
+                $this->db->update('tblcoba', $data);
+            }
+        }
+    }
+
+    public function tambahKriteria () {
+
+        $data = [
+            "kode" => $this->input->post('kodeKriteria', true),
+            "nama" => $this->input->post('kriteria', true),
+            "bobot" => $this->input->post('bobot', true),
+        ];
+        return $this->db->insert('tblcoba', $data);
+    }
+
+    public function ubahKriteria () {
+        $data = [
+            "kode" => $this->input->post('kodeKriteriaEdit', true),
+            "nama" => $this->input->post('kriteriaEdit', true),
+            "bobot" => $this->input->post('bobotEdit', true)
+        ];
+
+        $this->db->where('kode', $this->input->post('kodeKriteriaEdit', true));
+        $this->db->update('tblcoba', $data);
+    }
+
+    public function hapusKriteria ($kode) {
+        $this->db->delete('tblcoba', ['kode' => $kode]);
+    }
+}
+
+?>

@@ -1,0 +1,132 @@
+<div class="container">
+    <button class="btn btn-primary mt-3 mb-3" id="btnCoba"><i class="fas fa-plus"></i> Tambah
+        Kriteria</button>
+
+    <div class="row">
+        <div class="col">
+            <table class="table display responsive nowrap table-striped table-bordere" style="width:100%" id="tableCoba">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Kode</th>
+                        <th>Nama</th>
+                        <th>Bobot</th>
+                        <th>Normalisasi bobot</th>
+                        <th>Opsi</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Bootstrap modal tambah data-->
+<div class="modal fade" id="modal_formAddCoba" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Tambah Data Kriteria</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post" id="formAddCoba">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="kodeKriteria"> Kode Kriteria </label>
+                                <input type="text" class="form-control" id="kodeKriteria" name="kodeKriteria"
+                                    maxlength="7">
+                                <small class="form-text text-danger kodeKriteria"></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="kriteria"> Kriteria </label>
+                                <input type="text" class="form-control" id="kriteria" name="kriteria" maxlength="15">
+                                <small class="form-text text-danger kriteria"></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="bobot"> Bobot </label>
+                                <input type="text" class="form-control" id="bobot" name="bobot" maxlength="3">
+                                <small class="form-text text-danger bobot"></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                                class="fas fa-times"></i>
+                            Batal</button>
+                        <button type="submit" class="btn btn-primary buttonSubmit"><i class="fas fa-save"></i>
+                            Simpan</button>
+                    </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div><!-- /.modal -->
+<!-- End Bootstrap modal -->
+
+
+
+
+<!-- Bootstrap modal edit data-->
+<div class="modal fade" id="modal_formEditCoba" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Edit Data Kriteria</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+            <form action="" method="post" id="formEditCoba">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="kodeKriteriaEdit"> Kode Kriteria </label>
+                            <input type="text" class="form-control" id="kodeKriteriaEdit" name="kodeKriteriaEdit"
+                                maxlength="7">
+                            <small class="form-text text-danger kodeKriteriaEdit"></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="kriteriaEdit"> Kriteria </label>
+                            <input type="text" class="form-control" id="kriteriaEdit" name="kriteriaEdit"
+                                maxlength="15">
+                            <small class="form-text text-danger kriteriaEdit"></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="bobotEdit"> Bobot </label>
+                            <input type="text" class="form-control" id="bobotEdit" name="bobotEdit" maxlength="3">
+                            <small class="form-text text-danger bobotEdit"></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i>
+                        Batal</button>
+                    <button type="submit" class="btn btn-primary buttonSubmit"><i class="fas fa-save"></i>
+                        Ubah</button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div><!-- /.modal -->
+<!-- End Bootstrap modal -->
