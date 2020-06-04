@@ -1,12 +1,11 @@
 /system/
 /user_guide/
-composer.json
-license.txt
-readme.rst
 /application/cache/
 /application/core/
 /application/helpers/
 /application/libraries/
 /application/logs/
 /application/third_party/
-/assets/
+composer.json
+license.txt
+readme.rst
