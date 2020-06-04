@@ -1,7 +1,9 @@
 # dss_penilaiankaryawan
 method mpe (Metode Perbandingan Eksponensial)
 
-How to install :
+<strong> READ THIS!!!
+
+How to install : </strong>
 
 this project uses codeigniter 3, if you don't have it yet please download and install: https://codeigniter.com/download (choose codeigniter 3)
 
