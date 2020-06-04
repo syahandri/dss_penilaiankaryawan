@@ -1,11 +1,11 @@
-/system/
-/user_guide/
 /application/cache/
 /application/core/
 /application/helpers/
 /application/libraries/
 /application/logs/
 /application/third_party/
+/system/
+/user_guide/
 composer.json
 license.txt
 readme.rst
