@@ -4,7 +4,9 @@ class Karyawan extends CI_Controller {
 
     public function __construct () {
         parent::__construct();
-
+        if ($this->session->userdata('masuk') != TRUE) {
+            redirect(base_url('auth'));
+        }
         $this->load->model('Karyawan_Model');
     }
 
@@ -192,5 +194,3 @@ class Karyawan extends CI_Controller {
         echo json_encode(["status" => TRUE]);
     }
 }
-
-?>
