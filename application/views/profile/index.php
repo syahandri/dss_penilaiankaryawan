@@ -11,12 +11,12 @@
                     <form action="" method="post">
                         <input hidden id="id" name="id">
                         <div class="form-group">
-                            <img src="assets/img/profile.png" class="circle mx-auto d-block" id="imgFoto" width="25%" height="25%">
+                            <img src="<?= $profile['foto']; ?>" class="rounded mx-auto d-block" id="imgFoto" width="20%" height="20%">
                         </div>
 
                         <div class="form-group">
                             <label for="nip">NIP</label>
-                            <input type="text" name="nip" class="form-control" id="nip">
+                            <input type="text" name="nip" class="form-control" id="nip" value="<?= $profile['nip']; ?>">
                             <small class="form-text text-danger"><?= form_error('nip'); ?></small>
                         </div>
                         <div class="form-group">

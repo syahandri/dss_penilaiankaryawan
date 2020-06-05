@@ -49,6 +49,8 @@ class Auth extends CI_Controller
                 // $this->session->set_userdata('ses_id', $data['nip']);
                 $this->session->set_userdata('ses_nama', $data['nama']);
                 $this->session->set_userdata('ses_foto', $data['foto']);
+                $this->session->set_userdata('ses_id', $data['id']);
+                
                 redirect('home');
             } else {  // jika username dan password tidak ditemukan atau salah
                 $url = base_url();
