@@ -8,15 +8,15 @@
                 </div>
                 <div class="card-body">
 
-                    <form action="" method="post">
+                    <form action="" method="post" id="formProfile">
                         <input hidden id="id" name="id">
                         <div class="form-group">
-                            <img src="<?= $profile['foto']; ?>" class="rounded mx-auto d-block" id="imgFoto" width="20%" height="20%">
+                            <img src="" class="rounded mx-auto d-block" id="imgFoto" width="20%" height="20%">
                         </div>
 
                         <div class="form-group">
                             <label for="nip">NIP</label>
-                            <input type="text" name="nip" class="form-control" id="nip" value="<?= $profile['nip']; ?>">
+                            <input type="text" name="nip" class="form-control" id="nip">
                             <small class="form-text text-danger"><?= form_error('nip'); ?></small>
                         </div>
                         <div class="form-group">

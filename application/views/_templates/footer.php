@@ -66,14 +66,12 @@
 <!-- <script src="js/demo/chart-area-demo.js"></script> -->
 <!-- <script src="js/demo/chart-pie-demo.js"></script> -->
 
+<!-- script untuk ubah profile -->
+<script>
+    $('#formProfile').ready(function () {
+        // $('.profile').on('click', function () {
 
-
-<!-- <script>
-    $(document).ready(function () {
-        $('.profile').on('click', function (e) {
-            e.preventDefault();
-
-            let id = $(this).attr('id');
+            let id = $('.profile').attr('id');
 
             //Ajax Load data from ajax
             $.ajax({
@@ -110,9 +108,9 @@
                     });
                 }
             });
-        });
+        // });
     });
-</script> -->
+</script>
 
 </body>
 

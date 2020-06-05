@@ -148,9 +148,11 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item profile" href="<?= base_url('profile/index'); ?>" id="<?= $this->session->userdata('ses_id'); ?>"> <i class="fas fa-cogs fa-sm fa-fw mr-2 text-dark-400"></i> Profile
+                                <a class="dropdown-item profile" href="<?= base_url('profile'); ?>" id="<?= $this->session->userdata('ses_id'); ?>"> <i class="fas fa-cogs fa-sm fa-fw mr-2 text-dark-400"></i> Profile
                                 </a>
+
                                 <div class="dropdown-divider"></div>
+
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-dark-400"></i>
                                     Logout
