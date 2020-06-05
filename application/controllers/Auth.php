@@ -22,15 +22,6 @@ class Auth extends CI_Controller
         }
     }
 
-    // public function register()
-    // {
-    //     $data['title'] = "Halaman Registrasi";
-
-    //     $this->load->view('auth/auth_header', $data);
-    //     $this->load->view('auth/register');
-    //     $this->load->view('auth/auth_footer');
-    // }
-
     public function authentication()
     {
         $data['title'] = "Selamat Datang";
@@ -46,7 +37,7 @@ class Auth extends CI_Controller
 
         } else {
 
-            $nip = htmlspecialchars($this->input->post('username', TRUE), ENT_QUOTES);
+            $nip = htmlspecialchars($this->input->post('nip', TRUE), ENT_QUOTES);
             $password = htmlspecialchars($this->input->post('password', TRUE), ENT_QUOTES);
     
             $cek_admin = $this->auth_model->auth_pegawai($nip, $password);
@@ -57,10 +48,11 @@ class Auth extends CI_Controller
                 // $this->session->set_userdata('akses', '1');
                 // $this->session->set_userdata('ses_id', $data['nip']);
                 $this->session->set_userdata('ses_nama', $data['nama']);
+                $this->session->set_userdata('ses_foto', $data['foto']);
                 redirect('home');
             } else {  // jika username dan password tidak ditemukan atau salah
                 $url = base_url();
-                echo $this->session->set_flashdata('msg', 'Username Atau Password Salah');
+                echo $this->session->set_flashdata('msg', 'NIP Atau Password Salah');
                 redirect($url);
             }
         }

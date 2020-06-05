@@ -19,14 +19,18 @@
                                         <small class="text-danger"><?= $this->session->flashdata('msg'); ?></small>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" name="nip" id="nip" placeholder="Masukkan NIP">
+                                        <input type="text" class="form-control form-control-user" name="nip" id="nip" placeholder="Masukkan NIP" value="<?= set_value('nip'); ?>">
+                                        <div class="form-group text-center">
                                         <small class="form-text text-danger"><?= form_error('nip'); ?></small>
+                                        </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" name="password" id="password" placeholder="Kata sandi">
+                                        <input type="password" class="form-control form-control-user" name="password" id="password" placeholder="Kata sandi" value="<?= set_value('password'); ?>">
+                                        <div class="form-group text-center">
                                         <small class="form-text text-danger"><?= form_error('password'); ?></small>
+                                        </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                                    <button type="submit" class="btn btn-primary btn-user btn-block"><i class="fas fa-sign-in-alt"></i> 
                                         Masuk
                                     </button>
                                 </form>
