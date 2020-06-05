@@ -29,9 +29,6 @@
                                     </button>
                                 </form>
                                 <hr>
-                                <div class="text-center">
-                                    <a class="small" href="forgot-password.html">Lupa Kata Sandi?</a>
-                                </div>
                             </div>
                         </div>
                     </div>

@@ -22,14 +22,14 @@ class Auth extends CI_Controller
         }
     }
 
-    public function register()
-    {
-        $data['title'] = "Halaman Registrasi";
+    // public function register()
+    // {
+    //     $data['title'] = "Halaman Registrasi";
 
-        $this->load->view('auth/auth_header', $data);
-        $this->load->view('auth/register');
-        $this->load->view('auth/auth_footer');
-    }
+    //     $this->load->view('auth/auth_header', $data);
+    //     $this->load->view('auth/register');
+    //     $this->load->view('auth/auth_footer');
+    // }
 
     public function authentication()
     {
