@@ -3,9 +3,13 @@
 class Auth_model extends CI_Model
 {
 
-    public function auth_pegawai($nip, $password)
+    public function getUser($nip)
     {
-        $query = $this->db->query("SELECT * FROM tbladmin WHERE nip='$nip' AND pass=MD5('$password') LIMIT 1");
-        return $query;
+        $this->db->where('nip', $nip);
+        $result = $this->db->get('tbladmin')->row();
+        return $result;
+
+        // $query = $this->db->query("SELECT * FROM tbladmin WHERE nip='$nip' AND pass=MD5('$password') LIMIT 1");
+        // return $query;
     }
 }
