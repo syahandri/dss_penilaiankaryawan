@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" name="submit" class="btn btn-primary float-right">Simpan</button>
+                        <button type="submit" name="submit" class="btn btn-primary float-right"><i class="fas fa-save"> </i> Simpan</button>
                     </form>
                 </div>
             </div>

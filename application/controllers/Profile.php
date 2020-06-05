@@ -10,7 +10,7 @@ class Profile extends CI_Controller {
 
     public function index () {
         
-        $data['judul'] = 'Pengaturan Profil';
+        $data['judul'] = 'Pengaturan Profile';
 
         $this->load->view('_templates/header', $data);
         $this->load->view('profile/index');
