@@ -4,7 +4,9 @@ class Kriteria extends CI_Controller {
 
     public function __construct () {
         parent::__construct();
-
+        if ($this->session->userdata('masuk') != TRUE) {
+            redirect(base_url('auth'));
+        }
         // load model kriteris
         $this->load->model('Kriteria_Model');
     }
@@ -150,5 +152,3 @@ class Kriteria extends CI_Controller {
         echo json_encode(["status" => TRUE]);
     }
 }
-
-?>
