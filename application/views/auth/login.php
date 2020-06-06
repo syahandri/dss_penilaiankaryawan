@@ -16,7 +16,7 @@
                                 </div>
                                 <form class="user" method="post" action="<?= base_url('auth/authentication') ?>">
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" name="nip" id="nip" placeholder="Masukkan NIP" value="<?= set_value('nip'); ?>">
+                                        <input type="text" class="form-control form-control-user" name="nip" id="nip" placeholder="Masukkan NIP" value="<?= $this->session->userdata('ses_nip'); ?>">
                                         <div class="form-group text-center">
                                             <small class="form-text text-danger"><?= form_error('nip'); ?></small>
                                             <small class="form-text text-danger"><?= $this->session->flashdata('msg_nip'); ?></small>

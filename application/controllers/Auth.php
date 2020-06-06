@@ -51,6 +51,7 @@ class Auth extends CI_Controller
                     $this->session->set_userdata('ses_foto', $user->foto);
                     redirect('home');
                 } else {
+                    $this->session->set_userdata('ses_nip', $nip);
                     $this->session->set_flashdata('msg_password', 'Password anda salah');
                     redirect('auth');
                 }
