@@ -8,10 +8,10 @@
                 </div>
                 <div class="card-body">
 
-                    <form action="" method="post">
+                    <form action="" method="post" id="formProfile">
                         <input hidden id="id" name="id">
                         <div class="form-group">
-                            <img src="assets/img/profile.png" class="circle mx-auto d-block" id="imgFoto" width="25%" height="25%">
+                            <img src="" class="rounded mx-auto d-block" id="imgFoto" width="20%" height="20%">
                         </div>
 
                         <div class="form-group">
@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" name="submit" class="btn btn-primary float-right">Simpan</button>
+                        <button type="submit" name="submit" class="btn btn-primary float-right"><i class="fas fa-save"> </i> Simpan</button>
                     </form>
                 </div>
             </div>

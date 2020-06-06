@@ -66,13 +66,50 @@
 <!-- <script src="js/demo/chart-area-demo.js"></script> -->
 <!-- <script src="js/demo/chart-pie-demo.js"></script> -->
 
+<!-- script untuk ubah profile -->
 <script>
-// Add the following code if you want the name of the file appear on select
-$(".custom-file-input").on("change", function() {
-  let fileName = $(this).val().split("\\").pop();
-  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-  $('#imgFoto').attr('src', fileName);
-});
+    $('#formProfile').ready(function () {
+        // $('.profile').on('click', function () {
+
+            let id = $('.profile').attr('id');
+
+            //Ajax Load data from ajax
+            $.ajax({
+                url: 'profile/getProfileById',
+                data: {
+                    id: id
+                },
+                type: "post",
+                dataType: "JSON",
+                success: function (data) {
+
+                    $('#id').val(data.id);
+                    $('#nip').val(data.nip);
+                    $('#nama').val(data.nama);
+                    $('#imgFoto').attr('src', data.foto);
+
+                    $(".custom-file-input").on("change", function () {
+                        let fileName = $(this).val().split("\\").pop();
+                        $(this).siblings(".custom-file-label").addClass("selected")
+                            .html(
+                                fileName);
+                        if (fileName == '') {
+                            $('#imgFoto').attr('src', data.foto);
+                            $('.custom-file-label').addClass("selected").html(
+                                'Choose file');
+                        } else if (this.files && this.files[0]) {
+                            let reader = new FileReader();
+                            reader.onload = function (e) {
+                                $('#imgFoto').attr('src', e.target.result);
+                            }
+
+                            reader.readAsDataURL(this.files[0]);
+                        }
+                    });
+                }
+            });
+        // });
+    });
 </script>
 
 </body>
