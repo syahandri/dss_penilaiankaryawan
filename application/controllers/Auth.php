@@ -43,17 +43,18 @@ class Auth extends CI_Controller
 
             if (empty($user)) {
                 $this->session->set_flashdata('msg_nip', 'NIP tidak terdaftar atau Password salah');
-                redirect('auth');
+                redirect(base_url());
             } else {
                 if ($password == $user->pass) {
                     $this->session->set_userdata('masuk', TRUE);
+                    $this->session->set_userdata('ses_id', $user->id);
                     $this->session->set_userdata('ses_nama', $user->nama);
                     $this->session->set_userdata('ses_foto', $user->foto);
                     redirect('home');
                 } else {
                     $this->session->set_userdata('ses_nip', $nip);
                     $this->session->set_flashdata('msg_password', 'Password anda salah');
-                    redirect('auth');
+                    redirect(base_url());
                 }
             }
         }
