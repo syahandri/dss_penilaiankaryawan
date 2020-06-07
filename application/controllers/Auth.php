@@ -26,7 +26,6 @@ class Auth extends CI_Controller
     {
         $data['title'] = "Selamat Datang";
 
-
         $this->form_validation->set_rules('nip', 'NIP', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
 
@@ -35,34 +34,26 @@ class Auth extends CI_Controller
             $this->load->view('auth/auth_header', $data);
             $this->load->view('auth/login');
             $this->load->view('auth/auth_footer');
-
         } else {
 
             $nip = htmlspecialchars($this->input->post('nip'));
             $password = htmlspecialchars(md5($this->input->post('password')));
-        
-            $loginNip = $this->auth_model->getLoginByNip($nip);
-            $loginPass = $this->auth_model->getLoginByPass($password);
 
-            if ($loginNip->num_rows() == 0) {
-                if ($password == $loginPass['pass']) {
-                    $this->session->set_flashdata('msg_nip', 'NIP anda tidak terdaftar');
-                    redirect('auth');
-                } else {
-                    echo $this->session->set_flashdata('msg', 'NIP Atau Password Salah');
-                    redirect('auth');   
-                }
+            $user = $this->auth_model->getUser($nip);
+
+            if (empty($user)) {
+                $this->session->set_flashdata('msg_nip', 'NIP tidak terdaftar atau Password salah');
+                redirect('auth');
             } else {
-                $loginNip = $loginNip->row_array();
-                if ($password != $loginNip['pass']) {
+                if ($password == $user->pass) {
+                    $this->session->set_userdata('masuk', TRUE);
+                    $this->session->set_userdata('ses_nama', $user->nama);
+                    $this->session->set_userdata('ses_foto', $user->foto);
+                    redirect('home');
+                } else {
+                    $this->session->set_userdata('ses_nip', $nip);
                     $this->session->set_flashdata('msg_password', 'Password anda salah');
                     redirect('auth');
-                } else {
-                    $this->session->set_userdata('masuk', TRUE);
-                    $this->session->set_userdata('ses_id', $loginNip['id']);
-                    $this->session->set_userdata('ses_nama', $loginNip['nama']);
-                    $this->session->set_userdata('ses_foto', $loginNip['foto']);
-                    redirect('home');
                 }
             }
         }
