@@ -3,7 +3,7 @@
 class Karyawan extends CI_Controller {
 
     public function __construct () {
-        parent::__construct();
+        parent:: __construct();
         if ($this->session->userdata('masuk') != TRUE) {
             redirect(base_url('auth'));
         }
@@ -21,27 +21,27 @@ class Karyawan extends CI_Controller {
     public function getKaryawan () {
         $list = $this->Karyawan_Model->getDataTables();
         $data = [];
-        $no = $this->input->post('start');
+        $no   = $this->input->post('start');
 
         foreach ($list as $karyawan) {
-            $row = [];
-            $row[] = ++$no;
-            $row[] = $karyawan->nip;
-            $row[] = $karyawan->nama_karyawan;
-            $row[] = $karyawan->jenis_kelamin;
-            $row[] = $karyawan->alamat;
-            $row[] = $karyawan->email;
-            $row[] = $karyawan->no_telp;
+                 $row = [];
+            $row[]    = ++$no;
+            $row[]    = $karyawan->nip;
+            $row[]    = $karyawan->nama_karyawan;
+            $row[]    = $karyawan->jenis_kelamin;
+            $row[]    = $karyawan->alamat;
+            $row[]    = $karyawan->email;
+            $row[]    = $karyawan->no_telp;
             
             //add action in table
             $row[] = '
-            <div class="d-sm-flex bd-highlight align-content-center justify-content-around">
-            <button type="button" id="'. $karyawan->nip . '"class="btn btn-sm updateKaryawan">
-            <i class="fas fa-pencil-alt" style="color:blue"></i>
+            <div    class = "d-sm-flex bd-highlight align-content-center justify-content-around">
+            <button type  = "button" id               = "'. $karyawan->nip . '"class = "btn btn-sm updateKaryawan">
+            <i      class = "fas fa-pencil-alt" style = "color:blue"></i>
             </buton>
            
-            <button type="button" id="' . $karyawan->nip . '"class="btn btn-sm deleteKaryawan">
-            <i class="fas fa-trash" style="color:red"></i>
+            <button type  = "button" id          = "' . $karyawan->nip . '"class = "btn btn-sm deleteKaryawan">
+            <i      class = "fas fa-trash" style = "color:red"></i>
             </button>
             </div>
             ';
@@ -50,10 +50,10 @@ class Karyawan extends CI_Controller {
         }
 
         $output = [
-            "draw" => $this->input->post('draw'),
-            "recordsTotal" => $this->Karyawan_Model->countAll(),
+            "draw"            => $this->input->post('draw'),
+            "recordsTotal"    => $this->Karyawan_Model->countAll(),
             "recordsFiltered" => $this->Karyawan_Model->countFiltered(),
-            "data" => $data,
+            "data"            => $data,
         ];
     
         echo json_encode($output);
@@ -102,12 +102,12 @@ class Karyawan extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE) {
             $data = [
-                'nip' => form_error('nip'),
-                'nama' => form_error('nama'),
+                'nip'    => form_error('nip'),
+                'nama'   => form_error('nama'),
                 'gender' => form_error('gender'),
                 'alamat' => form_error('alamat'),
-                'email' => form_error('email'),
-                'telp' => form_error('telp')
+                'email'  => form_error('email'),
+                'telp'   => form_error('telp')
             ];   
 
             echo json_encode($data);
@@ -174,12 +174,12 @@ class Karyawan extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE) {
             $data = [
-                'nip' => form_error('nip'),
-                'nama' => form_error('nama'),
+                'nip'    => form_error('nip'),
+                'nama'   => form_error('nama'),
                 'gender' => form_error('gender'),
                 'alamat' => form_error('alamat'),
-                'email' => form_error('email'),
-                'telp' => form_error('telp')
+                'email'  => form_error('email'),
+                'telp'   => form_error('telp')
             ];   
 
             echo json_encode($data);

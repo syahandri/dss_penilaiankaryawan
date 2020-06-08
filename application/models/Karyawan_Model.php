@@ -3,9 +3,9 @@
 class Karyawan_Model extends CI_Model {
     
     //variabel untuk keperluan pagination jquery datatable
-    var $column_order = [null, 'nip', 'nama_karyawan', 'jenis_kelamin', 'alamat', 'email', 'no_telp', null];
+    var $column_order  = [null, 'nip', 'nama_karyawan', 'jenis_kelamin', 'alamat', 'email', 'no_telp', null];
     var $column_search = ['nip', 'nama_karyawan', 'jenis_kelamin', 'alamat', 'email', 'no_telp'];
-    var $order = ['nama_karyawan' => 'asc'];
+    var $order         = ['nama_karyawan' => 'asc'];
 
     // PAGINATION USING JQUERY DATA TABLES
     private function _get_datatables_query () {
@@ -62,12 +62,12 @@ class Karyawan_Model extends CI_Model {
 
     public function tambahKaryawan () {
         $data = [
-            "nip" => $this->input->post('nip', true),
+            "nip"           => $this->input->post('nip', true),
             "nama_karyawan" => $this->input->post('nama', true),
             "jenis_kelamin" => $this->input->post('gender', true),
-            "alamat" => $this->input->post('alamat', true),
-            "email" => $this->input->post('email', true),
-            "no_telp" => $this->input->post('telp', true)
+            "alamat"        => $this->input->post('alamat', true),
+            "email"         => $this->input->post('email', true),
+            "no_telp"       => $this->input->post('telp', true)
         ];
 
         return $this->db->insert('tblkaryawan', $data);
@@ -75,12 +75,12 @@ class Karyawan_Model extends CI_Model {
 
     public function ubahKaryawan () {
         $data = [
-            "nip" => $this->input->post('nip', true),
+            "nip"           => $this->input->post('nip', true),
             "nama_karyawan" => $this->input->post('nama', true),
             "jenis_kelamin" => $this->input->post('gender', true),
-            "alamat" => $this->input->post('alamat', true),
-            "email" => $this->input->post('email', true),
-            "no_telp" => $this->input->post('telp', true)
+            "alamat"        => $this->input->post('alamat', true),
+            "email"         => $this->input->post('email', true),
+            "no_telp"       => $this->input->post('telp', true)
         ];
 
         $this->db->where('nip', $this->input->post('nip', true));

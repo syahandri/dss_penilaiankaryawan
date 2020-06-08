@@ -30,7 +30,7 @@ class Profile_Model extends CI_Model {
 
     public function ubahProfile ($image) {
         $data = [
-            "nip" => $this->input->post('nipProfile', true),
+            "nip"  => $this->input->post('nipProfile', true),
             "nama" => $this->input->post('namaProfile', true),
             "foto" => $image
         ];

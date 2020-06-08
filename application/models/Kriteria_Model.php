@@ -3,9 +3,9 @@
 class Kriteria_Model extends CI_Model {
 
     //variabel untuk keperluan pagination jquery datatable
-    var $column_order = [null, 'kode_kriteria', 'kriteria', 'bobot', null];
+    var $column_order  = [null, 'kode_kriteria', 'kriteria', 'bobot', null];
     var $column_search = ['kode_kriteria', 'kriteria', 'bobot'];
-    var $order = ['kode_kriteria' => 'asc'];
+    var $order         = ['kode_kriteria' => 'asc'];
 
     
     // PAGINATION USING JQUERY DATA TABLES
@@ -69,8 +69,8 @@ class Kriteria_Model extends CI_Model {
     public function tambahKriteria () {
         $data = [
             "kode_kriteria" => $this->input->post('kodeKriteria', true),
-            "kriteria" => $this->input->post('kriteria', true),
-            "bobot" => $this->input->post('bobot', true)
+            "kriteria"      => $this->input->post('kriteria', true),
+            "bobot"         => $this->input->post('bobot', true)
         ];
 
         return $this->db->insert('tblkriteria', $data);
@@ -79,8 +79,8 @@ class Kriteria_Model extends CI_Model {
     public function ubahKriteria () {
         $data = [
             "kode_kriteria" => $this->input->post('kodeKriteria', true),
-            "kriteria" => $this->input->post('kriteria', true),
-            "bobot" => $this->input->post('bobot', true)
+            "kriteria"      => $this->input->post('kriteria', true),
+            "bobot"         => $this->input->post('bobot', true)
         ];
 
         $this->db->where('kode_kriteria', $this->input->post('kodeKriteria', true));

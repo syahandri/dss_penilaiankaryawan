@@ -9,19 +9,19 @@ $(document).ready(function () {
 	table = $('#tableKaryawan').DataTable({
 		"serverSide": true,
 		"responsive": true,
-		"ordering": true, // Set true agar bisa di sorting
+		"ordering"  : true,             // Set true agar bisa di sorting
 		"pagingType": "full_numbers",
-		"order": [],
-		"ajax": {
-			"url": "karyawan/getKaryawan", // URL file untuk proses select datanya
+		"order"     : [],
+		"ajax"      : {
+			"url" : "karyawan/getKaryawan",   // URL file untuk proses select datanya
 			"type": "POST"
 		},
 
 		"columnDefs": [{
 			"responsivePriority": 1,
-			"targets": [-1],
-			"width": '5%',
-			"targets": -1
+			"targets"           : [-1],
+			"width"             : '5%',
+			"targets"           : -1
 		}],
 		fixedHeader: true,
 		fixedColumn: true
@@ -90,13 +90,13 @@ $(document).ready(function () {
 
 		//Ajax Load data from ajax
 		$.ajax({
-			url: 'karyawan/getKaryawanById/',
+			url : 'karyawan/getKaryawanById/',
 			data: {
 				id: id
 			},
-			type: "post",
+			type    : "post",
 			dataType: "JSON",
-			success: function (data) {
+			success : function (data) {
 
 				$('#nip').val(data.nip);
 				$('#nama').val(data.nama_karyawan);
@@ -122,11 +122,11 @@ $(document).ready(function () {
 		if (fungsi == 'simpan') {
 
 			$.ajax({
-				url: 'karyawan/tambahKaryawan/',
-				type: "POST",
-				data: $('#formKaryawan').serialize(),
+				url     : 'karyawan/tambahKaryawan/',
+				type    : "POST",
+				data    : $('#formKaryawan').serialize(),
 				dataType: "JSON",
-				success: function (data) {
+				success : function (data) {
 
 					if (!data.status) {
 						$('.nip').html(data.nip);
@@ -138,8 +138,8 @@ $(document).ready(function () {
 					} else {
 						Swal.fire({
 							title: 'Data Karyawan',
-							text: 'Berhasil Ditambahkan',
-							icon: 'success'
+							text : 'Berhasil Ditambahkan',
+							icon : 'success'
 						});
 
 						$('#modal_Karyawan').modal('hide');
@@ -151,11 +151,11 @@ $(document).ready(function () {
 		} else {
 
 			$.ajax({
-				url: 'karyawan/ubahKaryawan/',
-				type: "POST",
-				data: $('#formKaryawan').serialize(),
+				url     : 'karyawan/ubahKaryawan/',
+				type    : "POST",
+				data    : $('#formKaryawan').serialize(),
 				dataType: "JSON",
-				success: function (data) {
+				success : function (data) {
 
 					if (!data.status) {
 						$('.nip').html(data.nip);
@@ -167,8 +167,8 @@ $(document).ready(function () {
 					} else {
 						Swal.fire({
 							title: 'Data Karyawan',
-							text: 'Berhasil Diubah',
-							icon: 'success'
+							text : 'Berhasil Diubah',
+							icon : 'success'
 						});
 
 						$('#modal_Karyawan').modal('hide');
@@ -197,29 +197,29 @@ $(document).ready(function () {
 		let id = $(this).attr('id');
 
 		Swal.fire({
-			title: 'Apakah anda yakin',
-			text: "Karyawan akan dihapus?",
-			icon: 'question',
-			showCancelButton: true,
+			title             : 'Apakah anda yakin',
+			text              : "Karyawan akan dihapus?",
+			icon              : 'question',
+			showCancelButton  : true,
 			confirmButtonColor: '#3085d6',
-			cancelButtonColor: '#d33',
-			cancelButtonText: 'Batal',
-			confirmButtonText: 'Hapus data'
+			cancelButtonColor : '#d33',
+			cancelButtonText  : 'Batal',
+			confirmButtonText : 'Hapus data'
 		}).then((result) => {
 			if (result.value) {
 				// ajax delete data to database
 				$.ajax({
-					url: "karyawan/hapusKaryawan/",
+					url : "karyawan/hapusKaryawan/",
 					data: {
 						id: id
 					},
-					type: "POST",
+					type    : "POST",
 					dataType: "JSON",
-					success: function (data) {
+					success : function (data) {
 						Swal.fire({
 							title: 'Data Karyawan',
-							text: 'Berhasil Dihapus',
-							icon: 'success'
+							text : 'Berhasil Dihapus',
+							icon : 'success'
 						});
 						reloadTable();
 					}

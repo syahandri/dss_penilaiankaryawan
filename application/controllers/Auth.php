@@ -5,7 +5,7 @@ class Auth extends CI_Controller
 {
     public function __construct()
     {
-        parent::__construct();
+        parent:: __construct();
         $this->load->model('auth_model');
     }
 
@@ -36,7 +36,7 @@ class Auth extends CI_Controller
             $this->load->view('auth/auth_footer');
         } else {
 
-            $nip = htmlspecialchars($this->input->post('nip'));
+            $nip      = htmlspecialchars($this->input->post('nip'));
             $password = htmlspecialchars(md5($this->input->post('password')));
 
             $user = $this->auth_model->getUser($nip);

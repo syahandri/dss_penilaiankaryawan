@@ -3,9 +3,9 @@
 class Sub_kriteria_Model extends CI_Model {
 
     //variabel untuk keperluan pagination jquery datatable
-    var $column_order = [null, 'kode_subkriteria', 'kode_kriteria', 'subkriteria', 'nilai', null];
+    var $column_order  = [null, 'kode_subkriteria', 'kode_kriteria', 'subkriteria', 'nilai', null];
     var $column_search = ['kode_subkriteria', 'kode_kriteria', 'subkriteria', 'nilai'];
-    var $order = ['kode_subkriteria' => 'asc'];
+    var $order         = ['kode_subkriteria' => 'asc'];
 
       // PAGINATION USING JQUERY DATA TABLES
       private function _get_datatables_query () {
@@ -72,10 +72,10 @@ class Sub_kriteria_Model extends CI_Model {
 
     public function tambahSubKriteria () {
         $data = [
-            "kode_kriteria" => $this->input->post('kodeKriteria', true),
+            "kode_kriteria"    => $this->input->post('kodeKriteria', true),
             "kode_subkriteria" => $this->input->post('kodesubKriteria', true),
-            "subkriteria" => $this->input->post('subKriteria', true),
-            "nilai" => $this->input->post('nilai', true)
+            "subkriteria"      => $this->input->post('subKriteria', true),
+            "nilai"            => $this->input->post('nilai', true)
         ];
 
         return $this->db->insert('tblsubkriteria', $data);
@@ -83,10 +83,10 @@ class Sub_kriteria_Model extends CI_Model {
 
     public function ubahSubKriteria () {
         $data = [
-            "kode_kriteria" => $this->input->post('kodeKriteria', true),
+            "kode_kriteria"    => $this->input->post('kodeKriteria', true),
             "kode_subkriteria" => $this->input->post('kodesubKriteria', true),
-            "subkriteria" => $this->input->post('subKriteria', true),
-            "nilai" => $this->input->post('nilai', true)
+            "subkriteria"      => $this->input->post('subKriteria', true),
+            "nilai"            => $this->input->post('nilai', true)
         ];
 
         $this->db->where('kode_subkriteria', $this->input->post('kodesubKriteria', true));

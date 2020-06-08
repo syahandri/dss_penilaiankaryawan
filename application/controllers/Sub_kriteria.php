@@ -3,7 +3,7 @@
 class Sub_kriteria extends CI_Controller {
 
     public function __construct () {
-        parent::__construct();
+        parent:: __construct();
         if ($this->session->userdata('masuk') != TRUE) {
             redirect(base_url('auth'));
         }
@@ -22,25 +22,25 @@ class Sub_kriteria extends CI_Controller {
     public function getSubKriteria () {
         $list = $this->Sub_kriteria_Model->getDataTables();
         $data = [];
-        $no = $this->input->post('start');
+        $no   = $this->input->post('start');
 
         foreach ($list as $subkriteria) {
-            $row = [];
-            $row[] = ++$no;
-            $row[] = $subkriteria->kode_subkriteria;
-            $row[] = $subkriteria->kode_kriteria;
-            $row[] = $subkriteria->subkriteria;
-            $row[] = $subkriteria->nilai;
+                 $row = [];
+            $row[]    = ++$no;
+            $row[]    = $subkriteria->kode_subkriteria;
+            $row[]    = $subkriteria->kode_kriteria;
+            $row[]    = $subkriteria->subkriteria;
+            $row[]    = $subkriteria->nilai;
             
             //add action in table
             $row[] = '
-            <div class="d-sm-flex bd-highlight align-content-center justify-content-around">
-            <button type="button" id="'. $subkriteria->kode_subkriteria . '"class="btn btn-sm updateSubKriteria">
-            <i class="fas fa-pencil-alt" style="color:blue"></i>
+            <div    class = "d-sm-flex bd-highlight align-content-center justify-content-around">
+            <button type  = "button" id               = "'. $subkriteria->kode_subkriteria . '"class = "btn btn-sm updateSubKriteria">
+            <i      class = "fas fa-pencil-alt" style = "color:blue"></i>
             </buton>
            
-            <button type="button" id="' . $subkriteria->kode_subkriteria . '"class="btn btn-sm deleteSubKriteria">
-            <i class="fas fa-trash" style="color:red"></i>
+            <button type  = "button" id          = "' . $subkriteria->kode_subkriteria . '"class = "btn btn-sm deleteSubKriteria">
+            <i      class = "fas fa-trash" style = "color:red"></i>
             </button>
             </div>
             ';
@@ -49,10 +49,10 @@ class Sub_kriteria extends CI_Controller {
         }
 
         $output = [
-            "draw" => $this->input->post('draw'),
-            "recordsTotal" => $this->Sub_kriteria_Model->countAll(),
+            "draw"            => $this->input->post('draw'),
+            "recordsTotal"    => $this->Sub_kriteria_Model->countAll(),
             "recordsFiltered" => $this->Sub_kriteria_Model->countFiltered(),
-            "data" => $data,
+            "data"            => $data,
         ];
     
         echo json_encode($output);
@@ -110,10 +110,10 @@ class Sub_kriteria extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE) {
             $data = [
-                'kodeKriteria' => form_error('kodeKriteria'),
+                'kodeKriteria'    => form_error('kodeKriteria'),
                 'kodesubKriteria' => form_error('kodesubKriteria'),
-                'subKriteria' => form_error('subKriteria'),
-                'nilai' => form_error('nilai')
+                'subKriteria'     => form_error('subKriteria'),
+                'nilai'           => form_error('nilai')
             ];   
 
             echo json_encode($data);
@@ -151,10 +151,10 @@ class Sub_kriteria extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE) {
             $data = [
-                'kodeKriteria' => form_error('kodeKriteria'),
+                'kodeKriteria'    => form_error('kodeKriteria'),
                 'kodesubKriteria' => form_error('kodesubKriteria'),
-                'subKriteria' => form_error('subKriteria'),
-                'nilai' => form_error('nilai')
+                'subKriteria'     => form_error('subKriteria'),
+                'nilai'           => form_error('nilai')
             ];   
 
             echo json_encode($data);

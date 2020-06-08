@@ -9,3 +9,5 @@ class Auth_model extends CI_Model
         return $result;
     }
 }
+
+?>

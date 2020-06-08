@@ -3,7 +3,7 @@
 class Profile extends CI_Controller {
 
     public function __construct () {
-        parent::__construct();
+        parent:: __construct();
 
         $this->load->model('Profile_Model');
     }
@@ -61,7 +61,7 @@ class Profile extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
              
             $data = [
-                'nipProfile' => form_error('nipProfile'),
+                'nipProfile'  => form_error('nipProfile'),
                 'namaProfile' => form_error('namaProfile')
             ];   
 
@@ -74,10 +74,10 @@ class Profile extends CI_Controller {
                 echo json_encode(array("status" => TRUE));
             } else {
                 
-                $config['upload_path'] = './assets/img/upload/';
-                $config['allowed_types'] = 'jpeg|jpg|png|gif'; 
-                $config['file_name'] = $this->input->post('id');
-                $config['overwrite'] = true;
+                $config['upload_path']   = './assets/img/upload/';
+                $config['allowed_types'] = 'jpeg|jpg|png|gif';
+                $config['file_name']     = $this->input->post('id');
+                $config['overwrite']     = true;
             
                 $this->load->library('upload', $config);
             

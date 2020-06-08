@@ -5,13 +5,13 @@ $('#formProfile').ready(function () {
 
         //Ajax Load data from ajax
     $.ajax({
-        url: 'profile/getProfileById',
+        url : 'profile/getProfileById',
         data: {
             id: id
         },
-        type: "post",
+        type    : "post",
         dataType: "JSON",
-        success: function (data) {
+        success : function (data) {
             $('#id').val(data.id);
             $('#old_foto').val(data.foto)
             $('#nipProfile').val(data.nip);
@@ -29,8 +29,8 @@ $('#formProfile').ready(function () {
                     $('#imgFoto').attr('src', 'assets/img/upload/' + data.foto);
                     $('.custom-file-label').addClass("selected").html('Choose file');
                 } else if (this.files && this.files[0]) {
-                    let reader = new FileReader();
-                    reader.onload = function (e) {
+                    let reader        = new FileReader();
+                        reader.onload = function (e) {
                         $('#imgFoto').attr('src', e.target.result);
                     }
 
@@ -44,21 +44,21 @@ $('#formProfile').ready(function () {
         e.preventDefault();
         
         $.ajax({
-            url: 'profile/ubahProfile/',
+            url : 'profile/ubahProfile/',
             type: "POST",
             // data: $('#formProfile').serialize(),
-            data: new FormData(this),
+            data       : new FormData(this),
             contentType: false,
-            cache: false,
+            cache      : false,
             processData: false,
-            dataType: "JSON",
-            success: function (data) {
+            dataType   : "JSON",
+            success    : function (data) {
 
                 if (data.status == true) {
                     Swal.fire({
                         title: 'Data Profile',
-                        text: 'Berhasil Diubah',
-                        icon: 'success'
+                        text : 'Berhasil Diubah',
+                        icon : 'success'
                     }); // fungsi akan dieksuksi setelah klik 'OK' ~~ .then(function() {}); ~~ //not activated now
                     $('.file-error').html('* pastikan unggah file gambar (".jpeg", ".jpg", ".png", ".gif") ');
                     $('.nipProfile').html('');
@@ -67,13 +67,13 @@ $('#formProfile').ready(function () {
 
                     //Ajax Load data from ajax
                     $.ajax({
-                        url: 'profile/getProfileById',
+                        url : 'profile/getProfileById',
                         data: {
                             id: id
                         },
-                        type: "post",
+                        type    : "post",
                         dataType: "JSON",
-                        success: function (data) {
+                        success : function (data) {
                             $('.profile-image').attr('src', 'assets/img/upload/' + data.foto);
                             $('.profile-name').html(data.nama);
                         }

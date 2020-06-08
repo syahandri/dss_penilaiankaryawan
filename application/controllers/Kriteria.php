@@ -3,7 +3,7 @@
 class Kriteria extends CI_Controller {
 
     public function __construct () {
-        parent::__construct();
+        parent:: __construct();
         if ($this->session->userdata('masuk') != TRUE) {
             redirect(base_url('auth'));
         }
@@ -22,24 +22,24 @@ class Kriteria extends CI_Controller {
     public function getKriteria () {
         $list = $this->Kriteria_Model->getDataTables();
         $data = [];
-        $no = $this->input->post('start');
+        $no   = $this->input->post('start');
 
         foreach ($list as $kriteria) {
-            $row = [];
-            $row[] = ++$no;
-            $row[] = $kriteria->kode_kriteria;
-            $row[] = $kriteria->kriteria;
-            $row[] = $kriteria->bobot;
+                 $row = [];
+            $row[]    = ++$no;
+            $row[]    = $kriteria->kode_kriteria;
+            $row[]    = $kriteria->kriteria;
+            $row[]    = $kriteria->bobot;
             
             //add action in table
             $row[] = '
-            <div class="d-sm-flex bd-highlight align-content-center justify-content-around">
-            <button type="button" id="'. $kriteria->kode_kriteria . '"class="btn btn-sm updateKriteria">
-            <i class="fas fa-pencil-alt" style="color:blue"></i>
+            <div    class = "d-sm-flex bd-highlight align-content-center justify-content-around">
+            <button type  = "button" id               = "'. $kriteria->kode_kriteria . '"class = "btn btn-sm updateKriteria">
+            <i      class = "fas fa-pencil-alt" style = "color:blue"></i>
             </buton>
            
-            <button type="button" id="' . $kriteria->kode_kriteria . '"class="btn btn-sm deleteKriteria">
-            <i class="fas fa-trash" style="color:red"></i>
+            <button type  = "button" id          = "' . $kriteria->kode_kriteria . '"class = "btn btn-sm deleteKriteria">
+            <i      class = "fas fa-trash" style = "color:red"></i>
             </button>
             </div>
             ';
@@ -48,10 +48,10 @@ class Kriteria extends CI_Controller {
         }
 
         $output = [
-            "draw" => $this->input->post('draw'),
-            "recordsTotal" => $this->Kriteria_Model->countAll(),
+            "draw"            => $this->input->post('draw'),
+            "recordsTotal"    => $this->Kriteria_Model->countAll(),
             "recordsFiltered" => $this->Kriteria_Model->countFiltered(),
-            "data" => $data,
+            "data"            => $data,
         ];
     
         echo json_encode($output);
@@ -100,8 +100,8 @@ class Kriteria extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $data = [
                 'kodeKriteria' => form_error('kodeKriteria'),
-                'kriteria' => form_error('kriteria'),
-                'bobot' => form_error('bobot')
+                'kriteria'     => form_error('kriteria'),
+                'bobot'        => form_error('bobot')
             ];   
 
             echo json_encode($data);
@@ -136,8 +136,8 @@ class Kriteria extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $data = [
                 'kodeKriteria' => form_error('kodeKriteria'),
-                'kriteria' => form_error('kriteria'),
-                'bobot' => form_error('bobot')
+                'kriteria'     => form_error('kriteria'),
+                'bobot'        => form_error('bobot')
             ];   
 
             echo json_encode($data);
