@@ -23,14 +23,13 @@ class Profile extends CI_Controller {
         echo json_encode($data);
     }
 
-      // method check email untuk ubah data (karena email is_unique)
       function check_nip ($nip) {
         if ($this->input->post('id')) {
             $id = $this->input->post('id');
          } else {
             $id = '';
         }
-
+        
         $result = $this->Profile_Model->check_nip($id, $nip);
         if ($result == 0) {
             $response = true;
@@ -76,7 +75,7 @@ class Profile extends CI_Controller {
                 
                 $config['upload_path']   = './assets/img/upload/';
                 $config['allowed_types'] = 'jpeg|jpg|png|gif';
-                $config['file_name']     = $this->input->post('id');
+                // $config['file_name']     = $this->input->post('id');
                 $config['overwrite']     = true;
             
                 $this->load->library('upload', $config);

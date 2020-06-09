@@ -9,19 +9,19 @@ $(document).ready(function () {
 	table = $('#tableSubKriteria').DataTable({
 		"serverSide": true,
 		"responsive": true,
-		"ordering"  : true,             // Set true agar bisa di sorting
+		"ordering": true, // Set true agar bisa di sorting
 		"pagingType": "full_numbers",
-		"order"     : [],
-		"ajax"      : {
-			"url" : "sub_kriteria/getSubKriteria",   // URL file untuk proses select datanya
+		"order": [],
+		"ajax": {
+			"url": "sub_kriteria/getSubKriteria", // URL file untuk proses select datanya
 			"type": "POST"
 		},
 
 		"columnDefs": [{
 			"responsivePriority": 1,
-			"targets"           : [-1],
-			"width"             : '5%',
-			"targets"           : -1
+			"targets": [-1],
+			"width": '5%',
+			"targets": -1
 		}],
 		fixedHeader: true,
 		fixedColumn: true
@@ -34,7 +34,7 @@ $(document).ready(function () {
 
 	// focus ke input type kriteria saat modal terbuka
 	$('#modal_subKriteria').on('shown.bs.modal', function () {
-        $('#kodeKriteria').focus();
+		$('#kodeKriteria').focus();
 	});
 
 	// fungsi hanya angka pada input bobot
@@ -47,31 +47,31 @@ $(document).ready(function () {
 	});
 
 	// fungsi kode sub kriteria terisi otomatis
-	function kodeOtomatis () {
+	function kodeOtomatis() {
 		$.ajax({
-			url     : 'Sub_kriteria/kodeOtomatis/',
-			type    : "post",
+			url: 'Sub_kriteria/kodeOtomatis/',
+			type: "post",
 			dataType: "JSON",
-			success : function (data) {
-				
+			success: function (data) {
+
 				$('#kodesubKriteria').val(data.kodeUrut);
 			}
 		});
-    }
+	}
 
-    // isi option value dengan kriteria
-    function getKriteria () {
-        $.ajax({
-			url     : 'Sub_kriteria/getKodeKriteria/',
-			type    : "post",
+	// isi option value dengan kriteria
+	function getKriteria() {
+		$.ajax({
+			url: 'Sub_kriteria/getKodeKriteria/',
+			type: "post",
 			dataType: "JSON",
-			success : function (data) {
-				$.each(data, function(index) {
-                        $('#kodeKriteria').append($('<option class="temp" value ="' + data[index].kode_kriteria + '">' + data[index].kriteria + '</option>'));
-                });
+			success: function (data) {
+				$.each(data, function (index) {
+					$('#kodeKriteria').append($('<option class="temp" value ="' + data[index].kode_kriteria + '">' + data[index].kriteria + '</option>'));
+				});
 			}
 		});
-    }
+	}
 	// method add data
 	$('#btnTambahSubKriteria').on('click', function () {
 		// isi variabel fungsi dengan 'simpan'
@@ -87,20 +87,20 @@ $(document).ready(function () {
 
 		$('#formSubKriteria')[0].reset(); // reset form on modals
 		$('#modal_subKriteria').modal('show');
-        $('#kodesubKriteria').attr('readonly', true);
+		$('#kodesubKriteria').attr('readonly', true);
 
-        kodeOtomatis();
-        $('option').remove('.temp');
-        getKriteria();
+		kodeOtomatis();
+		$('option').remove('.temp');
+		getKriteria();
 	});
 
 	// method update data
 	$(document).on('click', '.updateSubKriteria', function () {
 		// isi variabel fungsi dengan 'ubah'
-        fungsi = 'ubah';
-        
-        $('option').remove('.temp');
-        getKriteria();
+		fungsi = 'ubah';
+
+		$('option').remove('.temp');
+		getKriteria();
 
 		$('.modal-title').html('Edit Data Kriteria');
 		$('.modal-footer .buttonSubmit').html('<i class="fas fa-edit"></i> Ubah data');
@@ -118,13 +118,13 @@ $(document).ready(function () {
 
 		//Ajax Load data from ajax
 		$.ajax({
-			url : 'sub_kriteria/getSubKriteriaById/',
+			url: 'sub_kriteria/getSubKriteriaById/',
 			data: {
 				id: id
 			},
-			type    : "post",
+			type: "post",
 			dataType: "JSON",
-			success : function (data) {
+			success: function (data) {
 
 				$('#kodeKriteria').val(data.kode_kriteria);
 				$('#kodesubKriteria').val(data.kode_subkriteria);
@@ -141,11 +141,11 @@ $(document).ready(function () {
 		if (fungsi == 'simpan') {
 
 			$.ajax({
-				url     : 'sub_kriteria/tambahSubKriteria/',
-				type    : "POST",
-				data    : $('#formSubKriteria').serialize(),
+				url: 'sub_kriteria/tambahSubKriteria/',
+				type: "POST",
+				data: $('#formSubKriteria').serialize(),
 				dataType: "JSON",
-				success : function (data) {
+				success: function (data) {
 
 					if (!data.status) {
 						$('.kodeKriteria').html(data.kodeKriteria);
@@ -155,8 +155,8 @@ $(document).ready(function () {
 					} else {
 						Swal.fire({
 							title: 'Data Sub Kriteria',
-							text : 'Berhasil Ditambahkan',
-							icon : 'success'
+							text: 'Berhasil Ditambahkan',
+							icon: 'success'
 						});
 
 						$('#modal_subKriteria').modal('hide');
@@ -168,11 +168,11 @@ $(document).ready(function () {
 		} else {
 
 			$.ajax({
-				url     : 'sub_kriteria/ubahSubKriteria/',
-				type    : "POST",
-				data    : $('#formSubKriteria').serialize(),
+				url: 'sub_kriteria/ubahSubKriteria/',
+				type: "POST",
+				data: $('#formSubKriteria').serialize(),
 				dataType: "JSON",
-				success : function (data) {
+				success: function (data) {
 
 					if (!data.status) {
 						$('.kodeKriteria').html(data.kodeKriteria);
@@ -182,8 +182,8 @@ $(document).ready(function () {
 					} else {
 						Swal.fire({
 							title: 'Data Sub Kriteria',
-							text : 'Berhasil Diubah',
-							icon : 'success'
+							text: 'Berhasil Diubah',
+							icon: 'success'
 						});
 
 						$('#modal_subKriteria').modal('hide');
@@ -213,29 +213,29 @@ $(document).ready(function () {
 		let id = $(this).attr('id');
 
 		Swal.fire({
-			title             : 'Apakah anda yakin',
-			text              : "Sub Kriteria akan dihapus?",
-			icon              : 'question',
-			showCancelButton  : true,
+			title: 'Apakah anda yakin',
+			text: "Sub Kriteria akan dihapus?",
+			icon: 'question',
+			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
-			cancelButtonColor : '#d33',
-			cancelButtonText  : 'Batal',
-			confirmButtonText : 'Hapus data'
+			cancelButtonColor: '#d33',
+			cancelButtonText: 'Batal',
+			confirmButtonText: 'Hapus data'
 		}).then((result) => {
 			if (result.value) {
 				// ajax delete data to database
 				$.ajax({
-					url : "sub_kriteria/hapusSubKriteria/",
+					url: "sub_kriteria/hapusSubKriteria/",
 					data: {
 						id: id
 					},
-					type    : "POST",
+					type: "POST",
 					dataType: "JSON",
-					success : function (data) {
+					success: function (data) {
 						Swal.fire({
 							title: 'Data Sub Kriteria',
-							text : 'Berhasil Dihapus',
-							icon : 'success'
+							text: 'Berhasil Dihapus',
+							icon: 'success'
 						});
 						reloadTable();
 					}

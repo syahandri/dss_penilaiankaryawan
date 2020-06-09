@@ -9,19 +9,19 @@ $(document).ready(function () {
 	table = $('#tableKriteria').DataTable({
 		"serverSide": true,
 		"responsive": true,
-		"ordering"  : true,             // Set true agar bisa di sorting
+		"ordering": true, // Set true agar bisa di sorting
 		"pagingType": "full_numbers",
-		"order"     : [],
-		"ajax"      : {
-			"url" : "kriteria/getKriteria/",   // URL file untuk proses select datanya
+		"order": [],
+		"ajax": {
+			"url": "kriteria/getKriteria/", // URL file untuk proses select datanya
 			"type": "POST"
 		},
 
 		"columnDefs": [{
 			"responsivePriority": 1,
-			"targets"           : [-1],
-			"width"             : '5%',
-			"targets"           : -1
+			"targets": [-1],
+			"width": '5%',
+			"targets": -1
 		}],
 		fixedHeader: true,
 		fixedColumn: true
@@ -47,13 +47,13 @@ $(document).ready(function () {
 	});
 
 	// fungsi kode kriteria terisi otomatis
-	function kodeOtomatis () {
+	function kodeOtomatis() {
 		$.ajax({
-			url     : 'kriteria/kodeOtomatis/',
-			type    : "post",
+			url: 'kriteria/kodeOtomatis/',
+			type: "post",
 			dataType: "JSON",
-			success : function (data) {
-				
+			success: function (data) {
+
 				$('#kodeKriteria').val(data.kodeUrut);
 			}
 		});
@@ -98,13 +98,13 @@ $(document).ready(function () {
 
 		//Ajax Load data from ajax
 		$.ajax({
-			url : 'kriteria/getKriteriaById/',
+			url: 'kriteria/getKriteriaById/',
 			data: {
 				id: id
 			},
-			type    : "post",
+			type: "post",
 			dataType: "JSON",
-			success : function (data) {
+			success: function (data) {
 
 				$('#kodeKriteria').val(data.kode_kriteria);
 				$('#kriteria').val(data.kriteria);
@@ -120,11 +120,11 @@ $(document).ready(function () {
 		if (fungsi == 'simpan') {
 
 			$.ajax({
-				url     : 'kriteria/tambahKriteria/',
-				type    : "POST",
-				data    : $('#formKriteria').serialize(),
+				url: 'kriteria/tambahKriteria/',
+				type: "POST",
+				data: $('#formKriteria').serialize(),
 				dataType: "JSON",
-				success : function (data) {
+				success: function (data) {
 
 					if (!data.status) {
 						$('.kodeKriteria').html(data.kodeKriteria);
@@ -133,8 +133,8 @@ $(document).ready(function () {
 					} else {
 						Swal.fire({
 							title: 'Data Kriteria',
-							text : 'Berhasil Ditambahkan',
-							icon : 'success'
+							text: 'Berhasil Ditambahkan',
+							icon: 'success'
 						});
 
 						$('#modal_Kriteria').modal('hide');
@@ -146,11 +146,11 @@ $(document).ready(function () {
 		} else {
 
 			$.ajax({
-				url     : 'kriteria/ubahKriteria/',
-				type    : "POST",
-				data    : $('#formKriteria').serialize(),
+				url: 'kriteria/ubahKriteria/',
+				type: "POST",
+				data: $('#formKriteria').serialize(),
 				dataType: "JSON",
-				success : function (data) {
+				success: function (data) {
 
 					if (!data.status) {
 						$('.kodeKriteria').html(data.kodeKriteriaEdit);
@@ -159,10 +159,9 @@ $(document).ready(function () {
 					} else {
 						Swal.fire({
 							title: 'Data Kriteria',
-							text : 'Berhasil Diubah',
-							icon : 'success'
+							text: 'Berhasil Diubah',
+							icon: 'success'
 						});
-
 						$('#modal_Kriteria').modal('hide');
 					}
 				}
@@ -190,29 +189,29 @@ $(document).ready(function () {
 		let id = $(this).attr('id');
 
 		Swal.fire({
-			title             : 'Apakah anda yakin',
-			text              : "Kriteria akan dihapus?",
-			icon              : 'question',
-			showCancelButton  : true,
+			title: 'Apakah anda yakin?',
+			text: 'Menghapus data kriteria juga akan menghapus data subkriteria',
+			icon: 'question',
+			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
-			cancelButtonColor : '#d33',
-			cancelButtonText  : 'Batal',
-			confirmButtonText : 'Hapus data'
+			cancelButtonColor: '#d33',
+			cancelButtonText: 'Batal',
+			confirmButtonText: 'Hapus data'
 		}).then((result) => {
 			if (result.value) {
 				// ajax delete data to database
 				$.ajax({
-					url : "kriteria/hapusKriteria/",
+					url: "kriteria/hapusKriteria/",
 					data: {
 						id: id
 					},
-					type    : "POST",
+					type: "POST",
 					dataType: "JSON",
-					success : function (data) {
+					success: function (data) {
 						Swal.fire({
 							title: 'Data Kriteria',
-							text : 'Berhasil Dihapus',
-							icon : 'success'
+							text: 'Berhasil Dihapus',
+							icon: 'success'
 						});
 						reloadTable();
 					}
