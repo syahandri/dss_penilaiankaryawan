@@ -1,22 +1,26 @@
 $('#formProfile').ready(function () {
 
-    let id = $('.profile').attr('id');
+    let nip = $('.profile').attr('id');
+
     $('.file-error').html('* pastikan unggah file gambar (".jpeg", ".jpg", ".png", ".gif") ');
 
     //Ajax Load data from ajax
     $.ajax({
         url: 'profile/getProfileById',
         data: {
-            id: id
+            nipProfile: nip
         },
         type: "post",
         dataType: "JSON",
         success: function (data) {
-            $('#id').val(data.id);
+            // $('#nip').val(data.nip);
             $('#old_foto').val(data.foto)
             $('#nipProfile').val(data.nip);
             $('#namaProfile').val(data.nama);
             $('#imgFoto').attr('src', 'assets/img/upload/' + data.foto);
+
+             $('#nipProfile').attr('readonly', true);
+             $('#namaProfile').attr('readonly', true);
 
 
             $('.profile-image').attr('src', 'assets/img/upload/' + data.foto);
@@ -68,7 +72,7 @@ $('#formProfile').ready(function () {
                     $.ajax({
                         url: 'profile/getProfileById',
                         data: {
-                            id: id
+                            nipProfile: nip
                         },
                         type: "post",
                         dataType: "JSON",

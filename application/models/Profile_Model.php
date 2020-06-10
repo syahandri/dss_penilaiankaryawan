@@ -2,9 +2,9 @@
 
 class Profile_Model extends CI_Model {
 
-    public function getProfileById ($id) {
+    public function getProfileByNip ($nip) {
         $this->db->from('tbladmin');
-        $this->db->where('id', $id);
+        $this->db->where('nip', $nip);
         return $this->db->get()->row();
     }
 
@@ -30,23 +30,21 @@ class Profile_Model extends CI_Model {
 
     public function ubahProfile ($image) {
         $data = [
-            "nip"  => $this->input->post('nipProfile', true),
-            "nama" => $this->input->post('namaProfile', true),
             "foto" => $image
         ];
 
-        $this->db->where('id', $this->input->post('id', true));
+        $this->db->where('nip', $this->input->post('nipProfile', true));
         $this->db->update('tbladmin', $data);
     }
 
     // method check email akan dipanggil saat ubah data
-    function check_nip ($id = '', $nip) {
-        $this->db->where('nip', $nip);
-        if ($id) {
-            $this->db->where_not_in('id', $id);
-        }
-        return $this->db->get('tbladmin')->num_rows();
-    }
+    // function check_nip ($id = '', $nip) {
+    //     $this->db->where('nip', $nip);
+    //     if ($id) {
+    //         $this->db->where_not_in('id', $id);
+    //     }
+    //     return $this->db->get('tbladmin')->num_rows();
+    // }
 }
 
 ?>

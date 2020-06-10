@@ -19,26 +19,26 @@ class Profile extends CI_Controller {
 
     public function getProfileById () {
         
-        $data = $this->Profile_Model->getProfileById($this->input->post('id'));
+        $data = $this->Profile_Model->getProfileByNip($this->input->post('nipProfile'));
         echo json_encode($data);
     }
 
-      function check_nip ($nip) {
-        if ($this->input->post('id')) {
-            $id = $this->input->post('id');
-         } else {
-            $id = '';
-        }
+    //   function check_nip ($nip) {
+    //     if ($this->input->post('id')) {
+    //         $id = $this->input->post('id');
+    //      } else {
+    //         $id = '';
+    //     }
         
-        $result = $this->Profile_Model->check_nip($id, $nip);
-        if ($result == 0) {
-            $response = true;
-        } else {
-            $this->form_validation->set_message('check_nip', 'Field {field} sudah terdaftar');
-            $response = false;
-        }
-        return $response;
-    }
+    //     $result = $this->Profile_Model->check_nip($id, $nip);
+    //     if ($result == 0) {
+    //         $response = true;
+    //     } else {
+    //         $this->form_validation->set_message('check_nip', 'Field {field} sudah terdaftar');
+    //         $response = false;
+    //     }
+    //     return $response;
+    // }
 
     public function ubahProfile () {
 
@@ -46,7 +46,7 @@ class Profile extends CI_Controller {
             [
                 'field' => 'nipProfile',
                 'label' => 'NIP',
-                'rules' => 'required|numeric|callback_check_nip'
+                'rules' => 'required|numeric' //callback_check_nip
             ],
             [
                 'field' => 'namaProfile',
@@ -75,7 +75,7 @@ class Profile extends CI_Controller {
                 
                 $config['upload_path']   = './assets/img/upload/';
                 $config['allowed_types'] = 'jpeg|jpg|png|gif';
-                // $config['file_name']     = $this->input->post('id');
+                $config['file_name']     = $this->input->post('nipProfile');
                 $config['overwrite']     = true;
             
                 $this->load->library('upload', $config);

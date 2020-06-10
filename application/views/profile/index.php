@@ -5,7 +5,6 @@
             <div class="card">
                 <div class="card-body">
                     <form action="" method="post" id="formProfile">
-                        <input hidden id="id" name="id">
                         <input hidden id="old_foto" name="old_foto">
                         <div class="form-group">
                             <div class="text-center">

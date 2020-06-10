@@ -146,7 +146,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item profile" href="<?= base_url('profile'); ?>" id="<?= $this->session->userdata('ses_id'); ?>"> <i class="fas fa-cogs fa-sm fa-fw mr-2 text-dark-400"></i> Profile
+                                <a class="dropdown-item profile" href="<?= base_url('profile'); ?>" id="<?= $this->session->userdata('ses_nip'); ?>"> <i class="fas fa-cogs fa-sm fa-fw mr-2 text-dark-400"></i> Ubah Profile
                                 </a>
 
                                 <div class="dropdown-divider"></div>

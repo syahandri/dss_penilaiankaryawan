@@ -47,7 +47,7 @@ class Auth extends CI_Controller
             } else {
                 if ($password == $user->pass) {
                     $this->session->set_userdata('masuk', TRUE);
-                    $this->session->set_userdata('ses_id', $user->id);
+                    $this->session->set_userdata('ses_nip', $user->nip);
                     $this->session->set_userdata('ses_nama', $user->nama);
                     $this->session->set_userdata('ses_foto', $user->foto);
                     redirect('home');
