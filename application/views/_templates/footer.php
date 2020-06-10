@@ -57,6 +57,7 @@
 <script src="<?= base_url(); ?>assets/js/buatan-sendiri/subkriteriaScript.js"></script>
 <script src="<?= base_url(); ?>assets/js/buatan-sendiri/karyawanScript.js"></script>
 <script src="<?= base_url(); ?>assets/js/buatan-sendiri/profileScript.js"></script>
+<script src="<?= base_url(); ?>assets/js/buatan-sendiri/penilaianScript.js"></script>
 
 
 
