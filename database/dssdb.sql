@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 09 Jun 2020 pada 15.58
+-- Waktu pembuatan: 10 Jun 2020 pada 07.30
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.6
 
@@ -71,7 +71,6 @@ CREATE TABLE `nilaiMPE` (
 --
 
 CREATE TABLE `tbladmin` (
-  `id` int(11) NOT NULL,
   `nip` varchar(18) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `pass` varchar(50) NOT NULL,
@@ -82,9 +81,9 @@ CREATE TABLE `tbladmin` (
 -- Dumping data untuk tabel `tbladmin`
 --
 
-INSERT INTO `tbladmin` (`id`, `nip`, `nama`, `pass`, `foto`) VALUES
-(1, '102233445566778890', 'Abi Firmansyah', 'e10adc3949ba59abbe56e057f20f883e', 'profile.png'),
-(2, '102233445566778891', 'Ahmad Andrian Syah', 'd8578edf8458ce06fbc5bb76a58c5ca4', 'wallp.jpg');
+INSERT INTO `tbladmin` (`nip`, `nama`, `pass`, `foto`) VALUES
+('102233445566778890', 'Abi Firmansyah', 'e10adc3949ba59abbe56e057f20f883e', '102233445566778890.png'),
+('102233445566778891', 'Ahmad Andrian Syah', 'd8578edf8458ce06fbc5bb76a58c5ca4', '102233445566778891.jpg');
 
 -- --------------------------------------------------------
 
@@ -142,6 +141,14 @@ CREATE TABLE `tblpenilaian` (
   `kode_subkriteria` varchar(7) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `tblpenilaian`
+--
+
+INSERT INTO `tblpenilaian` (`id`, `tgl_penilaian`, `nip`, `kode_kriteria`, `kode_subkriteria`) VALUES
+(7, '2020-06-10', 123456789123456789, 'KTR001', 'SUB001'),
+(8, '2020-06-10', 112233445566778899, 'KTR001', 'SUB003');
+
 -- --------------------------------------------------------
 
 --
@@ -161,7 +168,8 @@ CREATE TABLE `tblsubkriteria` (
 
 INSERT INTO `tblsubkriteria` (`kode_kriteria`, `kode_subkriteria`, `subkriteria`, `nilai`) VALUES
 ('KTR001', 'SUB001', 'Baik', 3),
-('KTR001', 'SUB002', 'buruk', 2);
+('KTR001', 'SUB002', 'Buruk', 1),
+('KTR001', 'SUB003', 'Cukup', 2);
 
 -- --------------------------------------------------------
 
@@ -218,7 +226,8 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- Indeks untuk tabel `tbladmin`
 --
 ALTER TABLE `tbladmin`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`nip`),
+  ADD UNIQUE KEY `nip` (`nip`);
 
 --
 -- Indeks untuk tabel `tblkaryawan`
@@ -254,16 +263,10 @@ ALTER TABLE `tblsubkriteria`
 --
 
 --
--- AUTO_INCREMENT untuk tabel `tbladmin`
---
-ALTER TABLE `tbladmin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
 -- AUTO_INCREMENT untuk tabel `tblpenilaian`
 --
 ALTER TABLE `tblpenilaian`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
