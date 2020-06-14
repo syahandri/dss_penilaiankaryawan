@@ -79,6 +79,14 @@ class Sub_kriteria extends CI_Controller {
 
     public function getKodeKriteria () {
         $data = $this->Sub_kriteria_Model->getKodeKriteria();
+
+        $index = 0;
+        $array[] = [
+            "kode_kriteria" => "",
+            "kriteria" => "--- Pilih Salah Satu ---"
+        ];
+
+        array_splice($data, $index, 0 , $array);
         echo json_encode($data);
     }
 
