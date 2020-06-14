@@ -94,7 +94,7 @@ class Sub_kriteria extends CI_Controller {
         $rules = [
             [
                 'field' => 'kodeKriteria',
-                'label' => 'Kode Kriteria',
+                'label' => 'Kriteria',
                 'rules' => 'required'
             ],
             [
