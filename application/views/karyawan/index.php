@@ -11,9 +11,9 @@
                         <th>NIP</th>
                         <th>Nama Karyawan</th>
                         <th>Jenis Kelamin</th>
-                        <th>Alamat</th>
                         <th>E-mail</th>
                         <th>Telepon</th>
+                        <th>Alamat</th>
                         <th>Opsi</th>
                     </tr>
                 </thead>

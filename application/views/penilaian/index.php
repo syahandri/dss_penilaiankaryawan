@@ -1,5 +1,6 @@
 <div class="container">
-    <button class="btn btn-primary mt-3 mb-3" id="btnTambahPenilaian"><i class="fas fa-plus"></i> Tambah Penilaian</button>
+    <button class="btn btn-primary mt-3 mb-3" id="btnTambahPenilaian"><i class="fas fa-plus"></i> Tambah
+        Penilaian</button>
 
     <div class="row">
         <div class="col">
@@ -38,13 +39,13 @@
                             <div class="form-group">
                                 <label for="tgl_penilaian"> Tanggal Penilaian </label>
                                 <input type="text" class="form-control" id="tgl_penilaian" name="tgl_penilaian"
-                                    maxlength="7">
+                                    maxlength="10">
                                 <small class="form-text text-danger tgl_penilaian"></small>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="nip_nilai"> NIP </label>
+                                <label for="nip_nilai"> NIP - Nama Karyawan </label>
                                 <select class="form-control" id="nip_nilai" name="nip_nilai">
                                 </select>
                                 <small class="form-text text-danger nip_nilai"></small>
@@ -52,20 +53,10 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label for="nama_nilai"> Nama Karyawan </label>
-                                <input type="text" class="form-control" id="nama_nilai" name="nama_nilai"
-                                    maxlength="20" readonly>
-                                <small class="form-text text-danger nama_nilai"></small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="kriteria_nilai"> Kriteria </label>
-                                  <select class="form-control" id="kriteria_nilai" name="kriteria_nilai">
+                                <select class="form-control" id="kriteria_nilai" name="kriteria_nilai">
                                 </select>
                                 <small class="form-text text-danger kriteria_nilai"></small>
                             </div>
@@ -74,7 +65,7 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="sub_nilai"> Sub Kriteria </label>
-                                  <select class="form-control" id="sub_nilai" name="sub_nilai">
+                                <select class="form-control" id="sub_nilai" name="sub_nilai">
                                 </select>
                                 <small class="form-text text-danger sub_nilai"></small>
                             </div>

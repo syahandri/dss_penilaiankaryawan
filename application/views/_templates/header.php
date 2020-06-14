@@ -28,6 +28,10 @@
     <link rel="stylesheet" href="<?= base_url(); ?>assets/vendor/datatables/fixedHeader.bootstrap4.min.css">
     <link rel="stylesheet" href="<?= base_url(); ?>assets/vendor/datatables/fixedColumns.bootstrap4.min.css">
 
+
+    <!-- datepicker css -->
+     <link rel="stylesheet" href="<?= base_url(); ?>assets/css/jquery-ui.min.css">
+
 </head>
 
 <body id="page-top">
@@ -86,7 +90,7 @@
 
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('penilaian'); ?>">
-                    <i class="fas fa-fw fa-book-open"></i>
+                    <i class="fas fa-fw fa-table"></i>
                     <span>Penilaian Karyawan</span>
                 </a>
             </li>
@@ -102,7 +106,7 @@
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-table"></i>
+                    <i class="fas fa-fw fa-book-open"></i>
                     <span>Laporan Penilaian</span>
                 </a>
             </li>
@@ -139,14 +143,19 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small profile-name"><?= $this->session->userdata('ses_nama'); ?></span>
-                                <img class="img-profile profile-image rounded-circle" src="assets/img/upload/<?= $this->session->userdata('ses_foto'); ?>">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span
+                                    class="mr-2 d-none d-lg-inline text-gray-600 small profile-name"><?= $this->session->userdata('ses_nama'); ?></span>
+                                <img class="img-profile profile-image rounded-circle"
+                                    src="assets/img/upload/<?= $this->session->userdata('ses_foto'); ?>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item profile" href="<?= base_url('profile'); ?>" id="<?= $this->session->userdata('ses_nip'); ?>"> <i class="fas fa-cogs fa-sm fa-fw mr-2 text-dark-400"></i> Ubah Profile
+                                <a class="dropdown-item profile" href="<?= base_url('profile'); ?>"
+                                    id="<?= $this->session->userdata('ses_nip'); ?>"> <i
+                                        class="fas fa-cogs fa-sm fa-fw mr-2 text-dark-400"></i> Ubah Profile
                                 </a>
 
                                 <div class="dropdown-divider"></div>

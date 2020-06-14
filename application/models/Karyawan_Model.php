@@ -3,7 +3,7 @@
 class Karyawan_Model extends CI_Model {
     
     //variabel untuk keperluan pagination jquery datatable
-    var $column_order  = [null, 'nip', 'nama_karyawan', 'jenis_kelamin', 'alamat', 'email', 'no_telp', null];
+    var $column_order  = [null, 'nip', 'nama_karyawan', 'jenis_kelamin', 'email', 'no_telp', 'alamat', null];
     var $column_search = ['nip', 'nama_karyawan', 'jenis_kelamin', 'alamat', 'email', 'no_telp'];
     var $order         = ['nama_karyawan' => 'asc'];
 

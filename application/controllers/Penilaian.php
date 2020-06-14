@@ -30,12 +30,12 @@ class Penilaian extends CI_Controller {
             $row[]    = $nilai->tgl_penilaian;
             $row[]    = $nilai->nip;
             $row[]    = $nilai->nama_karyawan;
-            $row[]    = $nilai->nilai_aternatif_MPE;
+            $row[]    = $nilai->nilai_alternatif_MPE;
             
             //add action in table
             $row[] = '           
-            <button type  = "button" id          = "' . $nilai->nip . '"class = "btn btn-sm deletePenilaian">
-            <i      class = "fas fa-trash" style = "color:red"></i>
+            <button type  = "button" id="' . $nilai->nip . '" name="' . $nilai->tgl_penilaian . '"class="btn btn-sm deletePenilaian">
+            <i class="fas fa-trash" style="color:red"></i>
             </button>
             </div>
             ';
@@ -55,17 +55,91 @@ class Penilaian extends CI_Controller {
 
     public function getNip () {
         $data = $this->Penilaian_Model->getNip();
+
+        $index = 0;
+        $array[] = [
+            "nip" => "",
+            "nip_nama" => "--- Pilih Salah Satu ---"
+        ];
+
+        array_splice($data, $index, 0 , $array);
+
         echo json_encode($data);
+
     }
 
     public function getKriteria () {
         $data = $this->Penilaian_Model->getKriteria();
+
+        $index = 0;
+        $array[] = [
+            "kode_kriteria" => "",
+            "kriteria" => "--- Pilih Salah Satu ---"
+        ];
+
+        array_splice($data, $index, 0 , $array);
+
         echo json_encode($data);
     }
 
     public function getSubKriteria () {
         $data = $this->Penilaian_Model->getSubKriteria();
+
+        $index = 0;
+        $array[] = [
+            "kode_subkriteria" => "",
+            "subkriteria" => "--- Pilih Salah Satu ---"
+        ];
+
+        array_splice($data, $index, 0 , $array);
         echo json_encode($data);
+    }
+
+    public function tambahPenilaian () {
+        $rules = [
+            [
+                'field' => 'tgl_penilaian',
+                'label' => 'Tanggal Penilaian',
+                'rules' => 'required'
+            ],
+            [
+                'field' => 'nip_nilai',
+                'label' => 'Nip',
+                'rules' => 'required'
+            ],
+            [
+                'field' => 'kriteria_nilai',
+                'label' => 'Kriteria',
+                'rules' => 'required'
+            ],
+            [
+                'field' => 'sub_nilai',
+                'label' => 'Sub Kriteria',
+                'rules' => 'required'
+            ]
+        ];
+
+        $this->form_validation->set_rules($rules);
+
+        if ($this->form_validation->run() == FALSE) {
+            $data = [
+                'tgl_penilaian' => form_error('tgl_penilaian'),
+                'nip_nilai' => form_error('nip_nilai'),
+                'kriteria_nilai' => form_error('kriteria_nilai'),
+                'sub_nilai' => form_error('sub_nilai')
+            ];   
+
+            echo json_encode($data);
+        } else {
+            $this->Penilaian_Model->tambahPenilaian();
+            echo json_encode(array("status" => TRUE));
+        }
+
+    }
+
+    public function hapusPenilaian () {
+        $this->Penilaian_Model->hapusPenilaian($this->input->post('nip_nilai'), $this->input->post('tgl_penilaian'));
+        echo json_encode(["status" => TRUE]);
     }
 }
 

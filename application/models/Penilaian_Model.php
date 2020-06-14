@@ -1,10 +1,11 @@
 <?php
 
 class Penilaian_Model extends CI_Model {
+
       //variabel untuk keperluan pagination jquery datatable
-    var $column_order  = [null, 'tgl_penilaian', 'nip', 'nama_karyawan', 'nilai_aternatif_MPE', null];
-    var $column_search = ['nip', 'nama_karyawan', 'nilai_aternatif_MPE'];
-    var $order         = ['nilai_aternatif_MPE' => 'desc'];
+    var $column_order  = [null, 'tgl_penilaian', 'nip', 'nama_karyawan', 'nilai_alternatif_MPE', null];
+    var $column_search = ['tgl_penilaian', 'nip', 'nama_karyawan', 'nilai_alternatif_MPE'];
+    var $order         = ['nilai_alternatif_MPE' => 'desc'];
 
       // PAGINATION USING JQUERY DATA TABLES
       private function _get_datatables_query () {
@@ -54,7 +55,7 @@ class Penilaian_Model extends CI_Model {
     }
 
     public function getNip () {
-        $this->db->select("nip, nama_karyawan, concat(nip, ' - ', nama_karyawan) AS nip_nama");
+        $this->db->select("nip, concat(nip, ' - ', nama_karyawan) AS nip_nama");
         return $this->db->get('tblkaryawan')->result_array();
     }
 
@@ -66,6 +67,21 @@ class Penilaian_Model extends CI_Model {
     public function getSubKriteria () {
          $this->db->select("kode_subkriteria, concat(kode_subkriteria, ' - ', subkriteria) AS subkriteria");
         return $this->db->get('tblsubkriteria')->result_array();
+    }
+
+    public function tambahPenilaian () {
+        $data = [
+            "tgl_penilaian" => $this->input->post('tgl_penilaian', true),
+            "nip" => $this->input->post('nip_nilai', true),
+            "kode_kriteria" => $this->input->post('kriteria_nilai', true),
+            "kode_subkriteria" => $this->input->post('sub_nilai', true)
+        ];
+
+        return $this->db->insert('tblpenilaian', $data);
+    }
+
+    public function hapusPenilaian ($nip, $tgl_penilaian) {
+        $this->db->delete('tblpenilaian', ['nip' => $nip, 'tgl_penilaian' => $tgl_penilaian]);
     }
 }
 

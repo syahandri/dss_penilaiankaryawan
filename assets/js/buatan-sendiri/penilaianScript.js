@@ -1,17 +1,20 @@
 $(document).ready(function () {
-    let table;
-
     // variabel fungsi, akan diisi simpan / ubah (tergantung button yg diklik)
     let fungsi;
 
-    // Tabel Kriteria
     // Fetch Data Table
-    table = $('#tablePenilaian').DataTable({
-        "serverSide": true,
-        "responsive": true,
+    let table = $('#tablePenilaian').DataTable({
+        "serverSide": true, // serverside datatable
+        "responsive": true, // datatable responsive
         "ordering": true, // Set true agar bisa di sorting
-        "pagingType": "full_numbers",
-        "order": [],
+        "pagingType": "full_numbers", // paging type full number
+        "order": [], // order by ...
+
+        // add element search by date
+        "dom": "<'row'<'col-sm-12 col-md-1'<'dataTables_filter datesearchbox'>>>" + "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
+            "<'row'<'col-sm-12'tr>>" +
+            "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+
         "ajax": {
             "url": "penilaian/getDataPenilaian", // URL file untuk proses select datanya
             "type": "POST"
@@ -27,12 +30,37 @@ $(document).ready(function () {
         fixedColumn: true
     });
 
+    // add input datepicker
+    $("div.datesearchbox").html('<label>Search by date: <input hidden id="datesearch"></label>');
+
+    // change element input to datepicker
+    $('#datesearch').datepicker({
+        dateFormat: "yy-mm-dd",
+        showAnim: "slideDown",
+        gotoCurrent: true,
+        showOn: "button",
+        buttonImage: "assets/css/images/calender.gif",
+        buttonImageOnly: false,
+        buttonText: "Select date",
+        onSelect: function () {
+            table.search($(this).val()).draw();
+        }
+    });
+
     // reload data table
     function reloadTable() {
         table.ajax.reload(null, false); //reload datatable ajax 
     }
 
-    // isi option value dengan kriteria
+    // datepicker
+    $('#tgl_penilaian').datepicker({
+        // autoSize: true,
+        dateFormat: "yy-mm-dd",
+        showAnim: "slideDown",
+        gotoCurrent: true
+    });
+
+    // Menampilkan NIP - Nama_Karyawan di select option nip
     function getNip() {
         $.ajax({
             url: 'penilaian/getNip',
@@ -40,20 +68,14 @@ $(document).ready(function () {
             dataType: "JSON",
             success: function (data) {
                 $.each(data, function (index) {
-                    $('#nip_nilai').append($('<option class="temp" value ="' + data[index].nip + '">' + data[index].nip + " - " + data[index].nama_karyawan + ' </option>'));
+                    $('#nip_nilai').append($('<option class="temp" value ="' + data[index].nip + '">' + data[index].nip_nama + '</option>'));
 
-                })
-
+                });
             }
         });
-
-        $('select[name="nip_nilai"]').on('change', function () {
-            console.log($(this).text());
-        });
-
-
     }
 
+    // Menampilkan Kode Kriteria - Kriteria di select option kriteria
     function getKriteria() {
         $.ajax({
             url: 'penilaian/getKriteria',
@@ -67,6 +89,7 @@ $(document).ready(function () {
         });
     }
 
+    // Menampilkan Kode Sub Kriteria - Sub Kriteria di select option  subkriteria
     function getSubKriteria() {
         $.ajax({
             url: 'penilaian/getSubKriteria',
@@ -82,8 +105,11 @@ $(document).ready(function () {
 
     // method add data
     $('#btnTambahPenilaian').on('click', function () {
-        // isi variabel fungsi dengan 'simpan'
-        fungsi = 'simpan';
+
+        $('.tgl_penilaian').html('');
+        $('.nip_nilai').html('');
+        $('.kriteria_nilai').html('');
+        $('.sub_nilai').html('');
 
         $('.modal-title').html('Tambah Data Penilaian');
         $('.modal-footer .buttonSubmit').html('<i class="fas fa-save"></i> Simpan');
@@ -101,4 +127,79 @@ $(document).ready(function () {
         getKriteria();
         getSubKriteria();
     });
+
+    // Method submit / simpan
+    $('#formPenilaian').on('submit', function (e) {
+
+        // menghapus fungsi default dari form
+        e.preventDefault();
+
+        $.ajax({
+            url: 'penilaian/tambahPenilaian/',
+            type: "POST",
+            data: $('#formPenilaian').serialize(),
+            dataType: "JSON",
+            success: function (data) {
+
+                if (!data.status) {
+                    $('.tgl_penilaian').html(data.tgl_penilaian);
+                    $('.nip_nilai').html(data.nip_nilai);
+                    $('.kriteria_nilai').html(data.kriteria_nilai);
+                    $('.sub_nilai').html(data.sub_nilai);
+                } else {
+                    Swal.fire({
+                        title: 'Data Penilaian',
+                        text: 'Berhasil Ditambahkan',
+                        icon: 'success'
+                    });
+
+                    $('#modal_penilaian').modal('hide');
+                }
+            }
+
+        });
+
+        // panggil method reloadTable
+        reloadTable();
+    });
+
+    // Method Delete Kriteria
+	$(document).on('click', '.deletePenilaian', function () {
+
+        let nip_nilai = $(this).attr('id');
+        let tgl_penilaian = $(this).attr('name');
+        
+		Swal.fire({
+			title: 'Apakah anda yakin',
+			text: "Data Penilaian yang terkait akan dihapus?",
+			icon: 'question',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			cancelButtonText: 'Batal',
+			confirmButtonText: 'Hapus data'
+		}).then((result) => {
+			if (result.value) {
+				// ajax delete data to database
+				$.ajax({
+					url: "penilaian/hapusPenilaian/",
+					data: {
+                        nip_nilai: nip_nilai,
+                        tgl_penilaian : tgl_penilaian
+					},
+					type: "POST",
+					dataType: "JSON",
+					success: function (data) {
+						Swal.fire({
+							title: 'Data Penilaian',
+							text: 'Berhasil Dihapus',
+							icon: 'success'
+						});
+						reloadTable();
+					}
+				});
+			}
+		})
+
+	});
 });

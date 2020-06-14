@@ -51,6 +51,9 @@
 <!-- Font Awesome -->
 <script src="<?= base_url(); ?>assets/vendor/fontawesome-free/js/all.min.js"></script>
 
+<!-- datepicker jquery -->
+<script src="<?= base_url(); ?>assets/js/jquery-ui.min.js"></script>
+
 
 <!-- Script data processing -->
 <script src="<?= base_url(); ?>assets/js/buatan-sendiri/kriteriaScript.js"></script>
