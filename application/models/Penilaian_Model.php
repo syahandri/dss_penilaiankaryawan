@@ -60,12 +60,13 @@ class Penilaian_Model extends CI_Model {
     }
 
     public function getKriteria () {
-        $this->db->select("kode_kriteria, concat(kode_kriteria, ' - ', kriteria) AS kriteria");
+        $this->db->select("kode_kriteria, kriteria");
         return $this->db->get('tblkriteria')->result_array();
     }
 
-    public function getSubKriteria () {
-         $this->db->select("kode_subkriteria, concat(kode_subkriteria, ' - ', subkriteria) AS subkriteria");
+    public function getSubKriteria ($kode_kriteria) {
+        $this->db->select("kode_subkriteria, subkriteria");
+        $this->db->where('kode_kriteria', $kode_kriteria);
         return $this->db->get('tblsubkriteria')->result_array();
     }
 

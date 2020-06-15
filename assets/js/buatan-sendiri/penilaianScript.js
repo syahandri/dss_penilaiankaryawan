@@ -89,17 +89,25 @@ $(document).ready(function () {
         });
     }
 
-    // Menampilkan Kode Sub Kriteria - Sub Kriteria di select option  subkriteria
+    // Menampilkan Kode Sub Kriteria - Sub Kriteria di select option subkriteria
     function getSubKriteria() {
-        $.ajax({
-            url: 'penilaian/getSubKriteria',
-            type: "post",
-            dataType: "JSON",
-            success: function (data) {
-                $.each(data, function (index) {
-                    $('#sub_nilai').append($('<option class="temp" value ="' + data[index].kode_subkriteria + '">' + data[index].subkriteria + '</option>'));
-                });
-            }
+        $('#kriteria_nilai').on('change', function () {
+            let kode = $(this).val();
+            $('option').remove('.tempp');
+
+            $.ajax({
+                data: {
+                    kriteria_nilai: kode
+                },
+                url: 'penilaian/getSubKriteria',
+                type: "post",
+                dataType: "JSON",
+                success: function (data) {
+                    $.each(data, function (index) {
+                        $('#sub_nilai').append($('<option class="tempp" value ="' + data[index].kode_subkriteria + '">' + data[index].subkriteria + '</option>'));
+                    });
+                }
+            });
         });
     }
 
@@ -164,42 +172,42 @@ $(document).ready(function () {
     });
 
     // Method Delete Kriteria
-	$(document).on('click', '.deletePenilaian', function () {
+    $(document).on('click', '.deletePenilaian', function () {
 
         let nip_nilai = $(this).attr('id');
         let tgl_penilaian = $(this).attr('name');
-        
-		Swal.fire({
-			title: 'Apakah anda yakin',
-			text: "Data Penilaian yang terkait akan dihapus?",
-			icon: 'question',
-			showCancelButton: true,
-			confirmButtonColor: '#3085d6',
-			cancelButtonColor: '#d33',
-			cancelButtonText: 'Batal',
-			confirmButtonText: 'Hapus data'
-		}).then((result) => {
-			if (result.value) {
-				// ajax delete data to database
-				$.ajax({
-					url: "penilaian/hapusPenilaian/",
-					data: {
-                        nip_nilai: nip_nilai,
-                        tgl_penilaian : tgl_penilaian
-					},
-					type: "POST",
-					dataType: "JSON",
-					success: function (data) {
-						Swal.fire({
-							title: 'Data Penilaian',
-							text: 'Berhasil Dihapus',
-							icon: 'success'
-						});
-						reloadTable();
-					}
-				});
-			}
-		})
 
-	});
+        Swal.fire({
+            title: 'Apakah anda yakin',
+            text: "Data Penilaian yang terkait akan dihapus?",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Batal',
+            confirmButtonText: 'Hapus data'
+        }).then((result) => {
+            if (result.value) {
+                // ajax delete data to database
+                $.ajax({
+                    url: "penilaian/hapusPenilaian/",
+                    data: {
+                        nip_nilai: nip_nilai,
+                        tgl_penilaian: tgl_penilaian
+                    },
+                    type: "POST",
+                    dataType: "JSON",
+                    success: function (data) {
+                        Swal.fire({
+                            title: 'Data Penilaian',
+                            text: 'Berhasil Dihapus',
+                            icon: 'success'
+                        });
+                        reloadTable();
+                    }
+                });
+            }
+        })
+
+    });
 });

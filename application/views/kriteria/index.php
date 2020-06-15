@@ -47,7 +47,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="kriteria"> Kriteria </label>
-                                <input type="text" class="form-control" id="kriteria" name="kriteria" maxlength="15">
+                                <input type="text" class="form-control" id="kriteria" name="kriteria" maxlength="30">
                                 <small class="form-text text-danger kriteria"></small>
                             </div>
                         </div>

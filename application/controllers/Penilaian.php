@@ -83,7 +83,7 @@ class Penilaian extends CI_Controller {
     }
 
     public function getSubKriteria () {
-        $data = $this->Penilaian_Model->getSubKriteria();
+        $data = $this->Penilaian_Model->getSubKriteria($this->input->post('kriteria_nilai'));
 
         $index = 0;
         $array[] = [
