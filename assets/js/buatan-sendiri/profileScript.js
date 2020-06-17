@@ -19,9 +19,7 @@ $('#formProfile').ready(function () {
             $('#namaProfile').val(data.nama);
             $('#imgFoto').attr('src', 'assets/img/upload/' + data.foto);
 
-             $('#nipProfile').attr('readonly', true);
-             $('#namaProfile').attr('readonly', true);
-
+            $('#nipProfile, #namaProfile').attr('readonly', true);
 
             $('.profile-image').attr('src', 'assets/img/upload/' + data.foto);
             $('.profile-name').html(data.nama);
@@ -65,8 +63,7 @@ $('#formProfile').ready(function () {
                         icon: 'success'
                     });
                     $('.file-error').html('* pastikan unggah file gambar (".jpeg", ".jpg", ".png", ".gif") ');
-                    $('.nipProfile').html('');
-                    $('.namaProfile').html('');
+                    $('.nipProfile, .namaProfile').html('');
                     $('.custom-file-label').addClass("selected").html('Choose file');
 
                     $.ajax({

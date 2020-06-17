@@ -1,9 +1,7 @@
 $(document).ready(function () {
-    // variabel fungsi, akan diisi simpan / ubah (tergantung button yg diklik)
-    let fungsi;
 
     // Fetch Data Table
-    let table = $('#tablePenilaian').DataTable({
+    const table = $('#tablePenilaian').DataTable({
         "serverSide": true, // serverside datatable
         "responsive": true, // datatable responsive
         "ordering": true, // Set true agar bisa di sorting
@@ -60,8 +58,8 @@ $(document).ready(function () {
         gotoCurrent: true
     });
 
-    // Menampilkan NIP - Nama_Karyawan di select option nip
-    function getNip() {
+    function getNipKriteriaSub() {
+        // Nip
         $.ajax({
             url: 'penilaian/getNip',
             type: "post",
@@ -73,10 +71,8 @@ $(document).ready(function () {
                 });
             }
         });
-    }
 
-    // Menampilkan Kode Kriteria - Kriteria di select option kriteria
-    function getKriteria() {
+        // Kriteria
         $.ajax({
             url: 'penilaian/getKriteria',
             type: "post",
@@ -87,13 +83,10 @@ $(document).ready(function () {
                 });
             }
         });
-    }
 
-    // Menampilkan Kode Sub Kriteria - Sub Kriteria di select option subkriteria
-    function getSubKriteria() {
+        // Sub Kriteria
         $('#kriteria_nilai').on('change', function () {
             let kode = $(this).val();
-            $('option').remove('.tempp');
 
             $.ajax({
                 data: {
@@ -103,6 +96,7 @@ $(document).ready(function () {
                 type: "post",
                 dataType: "JSON",
                 success: function (data) {
+                    $('option').remove('.tempp');
                     $.each(data, function (index) {
                         $('#sub_nilai').append($('<option class="tempp" value ="' + data[index].kode_subkriteria + '">' + data[index].subkriteria + '</option>'));
                     });
@@ -114,26 +108,17 @@ $(document).ready(function () {
     // method add data
     $('#btnTambahPenilaian').on('click', function () {
 
-        $('.tgl_penilaian').html('');
-        $('.nip_nilai').html('');
-        $('.kriteria_nilai').html('');
-        $('.sub_nilai').html('');
+        $('.tgl_penilaian, .nip_nilai, .kriteria_nilai, .sub_nilai').html('');
 
         $('.modal-title').html('Tambah Data Penilaian');
         $('.modal-footer .buttonSubmit').html('<i class="fas fa-save"></i> Simpan');
 
-        $('.kodesubKriteria').html('');
-        $('.kodeKriteria').html('');
-        $('.subKriteria').html('');
-        $('.nilai').html('');
-
         $('#formPenilaian')[0].reset(); // reset form on modals
         $('#modal_penilaian').modal('show');
 
-        $('option').remove('.temp');
-        getNip();
-        getKriteria();
-        getSubKriteria();
+        $('.tempp, .temp').remove();
+
+        getNipKriteriaSub();
     });
 
     // Method submit / simpan

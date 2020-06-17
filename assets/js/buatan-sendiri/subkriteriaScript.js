@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	let table;
+	const table;
 
 	// variabel fungsi, akan diisi simpan / ubah (tergantung button yg diklik)
 	let fungsi;
@@ -80,17 +80,14 @@ $(document).ready(function () {
 		$('.modal-title').html('Tambah Data Kriteria');
 		$('.modal-footer .buttonSubmit').html('<i class="fas fa-save"></i> Simpan');
 
-		$('.kodesubKriteria').html('');
-		$('.kodeKriteria').html('');
-		$('.subKriteria').html('');
-		$('.nilai').html('');
+		$('.kodesubKriteria, .kodeKriteria, .subKriteria, .nilai').html('');
 
 		$('#formSubKriteria')[0].reset(); // reset form on modals
 		$('#modal_subKriteria').modal('show');
 		$('#kodesubKriteria').attr('readonly', true);
 
 		kodeOtomatis();
-		$('option').remove('.temp');
+		$('.temp').remove();
 		getKriteria();
 	});
 
@@ -99,17 +96,14 @@ $(document).ready(function () {
 		// isi variabel fungsi dengan 'ubah'
 		fungsi = 'ubah';
 
-		$('option').remove('.temp');
+		$('.temp').remove();
 		getKriteria();
 
 		$('.modal-title').html('Edit Data Kriteria');
 		$('.modal-footer .buttonSubmit').html('<i class="fas fa-edit"></i> Ubah data');
 
-		$('.kodesubKriteria').html('');
-		$('.kodeKriteria').html('');
-		$('.subKriteria').html('');
-		$('.nilai').html('');
-
+		$('.kodesubKriteria, .kodeKriteria, .subKriteria, .nilai').html('');
+		
 		$('#formSubKriteria')[0].reset(); // reset form on modals
 		$('#modal_subKriteria').modal('show'); // show bootstrap modal when complete loaded
 		$('#kodesubKriteria').attr('readonly', true);

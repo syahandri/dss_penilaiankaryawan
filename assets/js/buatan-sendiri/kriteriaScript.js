@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	let table;
+	const table;
 
 	// variabel fungsi, akan diisi simpan / ubah (tergantung button yg diklik)
 	let fungsi;
@@ -67,9 +67,7 @@ $(document).ready(function () {
 		$('.modal-title').html('Tambah Data Kriteria');
 		$('.modal-footer .buttonSubmit').html('<i class="fas fa-save"></i> Simpan');
 
-		$('.kodeKriteria').html('');
-		$('.kriteria').html('');
-		$('.bobot').html('');
+		$('.kodeKriteria, .kriteria, .bobot').html('');
 
 		$('#formKriteria')[0].reset(); // reset form on modals
 		$('#modal_Kriteria').modal('show');
@@ -85,10 +83,7 @@ $(document).ready(function () {
 		$('.modal-title').html('Edit Data Kriteria');
 		$('.modal-footer .buttonSubmit').html('<i class="fas fa-edit"></i> Ubah data');
 
-
-		$('.kodeKriteria').html('');
-		$('.kriteria').html('');
-		$('.bobot').html('');
+		$('.kodeKriteria, .kriteria, .bobot').html('');
 
 		$('#formKriteria')[0].reset(); // reset form on modals
 		$('#modal_Kriteria').modal('show'); // show bootstrap modal when complete loaded

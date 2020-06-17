@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	let table;
+	const table;
 
 	// variabel fungsi, akan diisi simpan / ubah (tergantung button yg diklik)
 	let fungsi;
@@ -55,12 +55,7 @@ $(document).ready(function () {
 		$('.modal-title').html('Tambah Data Karyawan');
 		$('.modal-footer .buttonSubmit').html('<i class="fas fa-save"></i> Simpan');
 
-		$('.nip').html('');
-		$('.nama').html('');
-		$('.gender').html('');
-		$('.alamat').html('');
-		$('.email').html('');
-		$('.telp').html('');
+		$('.nip, .nama, .gender, .alamat, .email, .telp').html('');
 
 		$('#formKaryawan')[0].reset(); // reset form on modals
 		$('#modal_Karyawan').modal('show'); // show modal
@@ -75,12 +70,7 @@ $(document).ready(function () {
 		$('.modal-title').html('Edit Data Karyawan');
 		$('.modal-footer .buttonSubmit').html('<i class="fas fa-edit"></i> Ubah data');
 
-		$('.nip').html('');
-		$('.nama').html('');
-		$('.gender').html('');
-		$('.alamat').html('');
-		$('.email').html('');
-		$('.telp').html('');
+		$('.nip, .nama, .gender, .alamat, .email, .telp').html('');
 
 		$('#formKaryawan')[0].reset(); // reset form on modals
 		$('#modal_Karyawan').modal('show');
