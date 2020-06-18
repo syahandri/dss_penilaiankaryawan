@@ -2,14 +2,18 @@
 
 class Penilaian_Model extends CI_Model {
 
-      //variabel untuk keperluan pagination jquery datatable
-    var $column_order  = [null, 'tgl_penilaian', 'nip', 'nama_karyawan', 'nilai_alternatif_MPE', null];
-    var $column_search = ['tgl_penilaian', 'nip', 'nama_karyawan', 'nilai_alternatif_MPE'];
-    var $order         = ['nilai_alternatif_MPE' => 'desc'];
+    // variabel untuk keperluan pagination jquery datatable
+    var $column_order  = [null, 'tgl_penilaian', 'nip', 'nama_karyawan', 'kriteria', 'subkriteria', null];
+    var $column_search = ['tgl_penilaian', 'nip', 'nama_karyawan', 'kriteria', 'subkriteria'];
+    var $order = ['tgl_penilaian' => 'desc']; // order 1st
+    var $order_second = ['nip' => 'asc']; // order 2nd
+    var $order_third = ['kriteria' => 'asc']; // order 3rd
 
       // PAGINATION USING JQUERY DATA TABLES
       private function _get_datatables_query () {
-        $this->db->from('nilai_alternatifMPE');
+        $this->db->select('tgl_penilaian, nip, nama_karyawan, kriteria, subkriteria');
+        // $this->db->order_by('tgl_penilaian DESC, nip ASC, kriteria ASC');
+        $this->db->from('detail_penilaian');
         
         $i = 0;
         foreach ($this->column_search as $item) {
@@ -30,9 +34,13 @@ class Penilaian_Model extends CI_Model {
 
         if ($this->input->post('order')) {
             $this->db->order_by($this->column_order[$this->input->post('order')[0]['column']], $this->input->post('order')[0]['dir']);
-        } else if (isset($this->order)) {
+        } else if (isset($this->order) && isset($this->order_second) && isset($this->order_third)) {
             $order = $this->order;
+            $order_second = $this->order_second;
+            $order_third = $this->order_third;
             $this->db->order_by(key($order), $order[key($order)]);
+            $this->db->order_by(key($order_second), $order_second[key($order_second)]);
+            $this->db->order_by(key($order_third), $order_third[key($order_third)]);
         }
     }
 
@@ -50,7 +58,7 @@ class Penilaian_Model extends CI_Model {
     }
 
     public function countAll () {
-        $this->db->from('nilai_alternatifMPE');
+        $this->db->from('detail_penilaian');
         return $this->db->count_all_results();
     }
 
@@ -70,7 +78,15 @@ class Penilaian_Model extends CI_Model {
         return $this->db->get('tblsubkriteria')->result_array();
     }
 
+    function cek_kriteria ($tgl_penilaian, $nip, $kode_kriteria) {
+        $this->db->where('kode_kriteria', $kode_kriteria);
+        $this->db->where('tgl_penilaian', $tgl_penilaian);
+        $this->db->where('nip', $nip);
+        return $this->db->get('tblpenilaian')->num_rows();
+    }
+
     public function tambahPenilaian () {
+
         $data = [
             "tgl_penilaian" => $this->input->post('tgl_penilaian', true),
             "nip" => $this->input->post('nip_nilai', true),

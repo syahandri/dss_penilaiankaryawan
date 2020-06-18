@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="<?= base_url(); ?>assets/vendor/datatables/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="<?= base_url(); ?>assets/vendor/datatables/fixedHeader.bootstrap4.min.css">
     <link rel="stylesheet" href="<?= base_url(); ?>assets/vendor/datatables/fixedColumns.bootstrap4.min.css">
-
+    <link rel="stylesheet" href="<?= base_url(); ?>assets/vendor/datatables/button.bootstrap4.css">
 
     <!-- datepicker css -->
      <link rel="stylesheet" href="<?= base_url(); ?>assets/css/jquery-ui.min.css">
@@ -105,7 +105,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<?= base_url('hasil_penilaian'); ?>">
                     <i class="fas fa-fw fa-book-open"></i>
                     <span>Laporan Penilaian</span>
                 </a>

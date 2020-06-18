@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col">
-            <table class="table display responsive nowrap table-striped table-bordere" style="width:100%"
+            <table class="table display responsive nowrap table-striped" style="width:100%"
                 id="tablePenilaian">
                 <thead class="thead-dark">
                     <tr>
@@ -12,7 +12,8 @@
                         <th>Tanggal</th>
                         <th>NIP</th>
                         <th>Nama Karyawan</th>
-                        <th>Nilai MPE</th>
+                        <th>Kriteria</th>
+                        <th>Sub Kriteria</th>
                         <th>Opsi</th>
                     </tr>
                 </thead>
@@ -72,10 +73,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
-                                class="fas fa-times"></i>
-                            Batal</button>
-                        <button type="submit" class="btn btn-primary buttonSubmit"></button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i> Batal</button>
+                        <button type="submit" class="btn btn-primary btnSimpan"></button>
                     </div>
             </div>
             </form>

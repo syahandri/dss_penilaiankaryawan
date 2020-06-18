@@ -1,12 +1,12 @@
 $(document).ready(function () {
 
     // Fetch Data Table
-    const table = $('#tablePenilaian').DataTable({
+    let table = $('#tablePenilaian').DataTable({
         "serverSide": true, // serverside datatable
         "responsive": true, // datatable responsive
         "ordering": true, // Set true agar bisa di sorting
         "pagingType": "full_numbers", // paging type full number
-        "order": [], // order by ...
+        "order": [], // order by ... [1, 'asc']
 
         // add element search by date
         "dom": "<'row'<'col-sm-12 col-md-1'<'dataTables_filter datesearchbox'>>>" + "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
@@ -111,7 +111,7 @@ $(document).ready(function () {
         $('.tgl_penilaian, .nip_nilai, .kriteria_nilai, .sub_nilai').html('');
 
         $('.modal-title').html('Tambah Data Penilaian');
-        $('.modal-footer .buttonSubmit').html('<i class="fas fa-save"></i> Simpan');
+        $('.modal-footer .btnSimpan').html('<i class="fas fa-save"></i> Simpan');
 
         $('#formPenilaian')[0].reset(); // reset form on modals
         $('#modal_penilaian').modal('show');

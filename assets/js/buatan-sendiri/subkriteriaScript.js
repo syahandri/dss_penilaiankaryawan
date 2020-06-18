@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	const table;
+	let table;
 
 	// variabel fungsi, akan diisi simpan / ubah (tergantung button yg diklik)
 	let fungsi;

@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col">
-            <table class="table display responsive nowrap table-striped table-bordere" style="width:100%"
+            <table class="table display responsive nowrap table-striped" style="width:100%"
                 id="tableKriteria">
                 <thead class="thead-dark">
                     <tr>

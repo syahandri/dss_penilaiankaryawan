@@ -7,12 +7,12 @@ class Penilaian extends CI_Controller {
         if ($this->session->userdata('masuk') != TRUE) {
             redirect(base_url('auth'));
         }
-        // load model kriteris
+        // load model penilaian
         $this->load->model('Penilaian_Model');
     }
 
      public function index () {
-        $data['judul'] = 'Form Penilaian';
+        $data['judul'] = 'Form Penilaian Karyawan';
 
         $this->load->view('_templates/header', $data);
         $this->load->view('penilaian/index', $data);
@@ -30,7 +30,8 @@ class Penilaian extends CI_Controller {
             $row[]    = $nilai->tgl_penilaian;
             $row[]    = $nilai->nip;
             $row[]    = $nilai->nama_karyawan;
-            $row[]    = $nilai->nilai_alternatif_MPE;
+            $row[]    = $nilai->kriteria;
+            $row[]    = $nilai->subkriteria;
             
             //add action in table
             $row[] = '           
@@ -95,6 +96,17 @@ class Penilaian extends CI_Controller {
         echo json_encode($data);
     }
 
+    function cek_kriteria () {
+        $result = $this->Penilaian_Model->cek_kriteria($this->input->post('tgl_penilaian'), $this->input->post('nip_nilai'),  $this->input->post('kriteria_nilai'));
+        if ($result == 0) {
+            $response = true;
+        } else {
+            $this->form_validation->set_message('cek_kriteria', '{field} (' . $this->input->post("kriteria_nilai") . ') sudah digunakan untuk menilai karyawan (' . $this->input->post('nip_nilai') . ') pada tanggal ' . $this->input->post('tgl_penilaian'));
+            $response = false;
+        }
+        return $response;
+    }
+
     public function tambahPenilaian () {
         $rules = [
             [
@@ -110,7 +122,7 @@ class Penilaian extends CI_Controller {
             [
                 'field' => 'kriteria_nilai',
                 'label' => 'Kriteria',
-                'rules' => 'required'
+                'rules' => 'required|callback_cek_kriteria'
             ],
             [
                 'field' => 'sub_nilai',

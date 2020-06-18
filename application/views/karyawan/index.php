@@ -3,7 +3,7 @@
 
     <div class="row">
         <div class="col">
-            <table class="table display responsive nowrap table-striped table-bordere" style="width:100%"
+            <table class="table display responsive nowrap table-striped" style="width:100%"
                 id="tableKaryawan">
                 <thead class="thead-dark">
                     <tr>
@@ -83,14 +83,14 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="email"> E-mail </label>
-                                <input type="text" class="form-control" id="email" name="email" maxlength="25">
+                                <input type="text" class="form-control" id="email" name="email" maxlength="50">
                                 <small class="form-text text-danger email"></small>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="telp"> Telepon </label>
-                                <input type="text" class="form-control" id="telp" name="telp" maxlength="13">
+                                <input type="text" class="form-control" id="telp" name="telp" maxlength="20">
                                 <small class="form-text text-danger telp"></small>
                             </div>
                         </div>
