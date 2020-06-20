@@ -70,11 +70,14 @@
 <script src="<?= base_url(); ?>assets/js/buatan-sendiri/profileScript.js"></script>
 <script src="<?= base_url(); ?>assets/js/buatan-sendiri/penilaianScript.js"></script>
 <script src="<?= base_url(); ?>assets/js/buatan-sendiri/hasil_penilaianScript.js"></script>
+<script src="<?= base_url(); ?>assets/js/buatan-sendiri/homeScript.js"></script>
 
 
 
-<!-- Page level plugins -->
-<!-- <script src="vendor/chart.js/Chart.min.js"></script> -->
+<!-- chart -->
+<!-- <script src="<?= base_url(); ?>assets/vendor/chart/chart.js"></script> -->
+<!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
+<script src="<?= base_url(); ?>assets/vendor/chart/jquery.canvasjs.min.js"></script>
 
 <!-- Page level custom scripts -->
 <!-- <script src="js/demo/chart-area-demo.js"></script> -->
