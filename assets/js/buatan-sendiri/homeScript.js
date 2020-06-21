@@ -23,7 +23,9 @@ window.onload = function () {
     fixedHeader: true,
     fixedColumn: true
   })
-
+  
+  $("#tablePenilaianHome_filter > label > input[type='search']").prop('type','hidden');
+  $("#tablePenilaianHome_filter > label").remove();
   table.search($('#filterTgl').val()).draw();
 
   $('#filterTgl').change(function () {
