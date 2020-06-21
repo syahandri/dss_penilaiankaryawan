@@ -36,13 +36,21 @@ class Home extends CI_Controller
 
     public function getTgl () {
         $data = $this->Home_Model->getTgl();
-        
-        $index = 0;
-        $array[] = [
-                "tgl_penilaian" => "--- Pilih Tanggal ---"
-            ];
+        echo json_encode($data);
+    }
 
-        array_splice($data, $index, 0 , $array);
+    public function countKaryawan () {
+        $data = $this->Home_Model->countKaryawan();
+        echo json_encode($data);
+    }
+
+    public function countKriteria () {
+        $data = $this->Home_Model->countKriteria();
+        echo json_encode($data);
+    }
+
+    public function countSub () {
+        $data = $this->Home_Model->countSub();
         echo json_encode($data);
     }
 }

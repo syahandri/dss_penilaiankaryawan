@@ -14,6 +14,18 @@ class Home_Model extends CI_Model {
         return $this->db->get('nilai_alternatifMPE')->result_array();
     }
 
+    public function countKaryawan () {
+        return $this->db->count_all_results('tblkaryawan');
+    }
+
+    public function countKriteria () {
+        return $this->db->count_all_results('tblkriteria');
+    }
+
+    public function countSub () {
+        return $this->db->count_all_results('tblsubkriteria');
+    }
+
 }
 
 ?>
