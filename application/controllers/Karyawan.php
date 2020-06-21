@@ -29,9 +29,9 @@ class Karyawan extends CI_Controller {
             $row[]    = $karyawan->nip;
             $row[]    = $karyawan->nama_karyawan;
             $row[]    = $karyawan->jenis_kelamin;
-            $row[]    = $karyawan->alamat;
             $row[]    = $karyawan->email;
             $row[]    = $karyawan->no_telp;
+            $row[]    = $karyawan->alamat;
             
             //add action in table
             $row[] = '

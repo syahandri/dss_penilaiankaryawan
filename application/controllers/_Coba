@@ -141,3 +141,112 @@ class Coba extends CI_Controller {
 }
 
 ?>
+
+
+
+
+
+// google chart
+
+// $(document).ready(function () {
+//   $('.filterTgl').remove()
+
+//   $.ajax({
+//     url: 'home/getTgl',
+//     type: 'post',
+//     dataType: 'JSON',
+//     success: function (data) {
+//       $.each(data, function (index) {
+//         $('#filterTgl').append(
+//           $(
+//             '<option class="filterTgl" value ="' +
+//               data[index].tgl_penilaian +
+//               '">' +
+//               data[index].tgl_penilaian +
+//               '</option>'
+//           )
+//         )
+//       })
+//     }
+//   })
+
+//   google.charts.load('current', {
+//     packages: ['corechart, bar']
+//   })
+//   google.charts.setOnLoadCallback()
+
+//   function load_data(tgl, title) {
+//     let temp_title = title + ' ' + tgl
+//     $.ajax({
+//       url: 'home/getHasil',
+//       method: 'POST',
+//       data: {
+//         filterTgl: tgl
+//       },
+//       dataType: 'JSON',
+//       success: function (data) {
+//         tampilGrafik(data, temp_title)
+//       }
+//     })
+//   }
+
+//   function tampilGrafik(myData, mainTitle) {
+//     let jsonData = myData
+//     let data = new google.visualization.DataTable()
+
+//     data.addColumn('string', 'Nama Karyawan')
+//     data.addColumn('number', 'Nilai MPE')
+//     data.addColumn({
+//       role: 'style'
+//     })
+
+//     $.each(jsonData, function (i, jsonData) {
+//       let nama_karyawan = jsonData.nama_karyawan
+//       let nilai_mpe = parseFloat($.trim(jsonData.nilai_mpe))
+
+//       data.addRows([
+//         [
+//           nama_karyawan,
+//           nilai_mpe,
+//           'opacity: 0.6; stroke-color: #0000FF; stroke-width: 2'
+//         ]
+//       ])
+//     })
+
+//     let options = {
+//       title: mainTitle,
+//       legend: 'none',
+//       bar: {
+//         groupWidth: '50%'
+//       },
+//       hAxis: {
+//         title: 'Karyawan'
+//       },
+//       vAxis: {
+//         title: 'Nilai MPE',
+//         format: 'decimal',
+//         minValue: 0,
+//         maxValue: 1,
+//         gridlines: {
+//           count: 4
+//         }
+//       },
+//       chartArea: {
+//         width: '80%',
+//         height: '70%'
+//       }
+//     }
+
+//     let chart = new google.visualization.ColumnChart(
+//       document.getElementById('grafik-mpe')
+//     )
+//     chart.draw(data, options)
+//   }
+
+//   $('#filterTgl').change(function () {
+//     let tgl = $(this).val()
+//     if (tgl != '' || tgl != '--- Pilih Tanggal ---') {
+//       load_data(tgl, 'Penilaian Tanggal')
+//     }
+//   })
+// })

@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col">
-            <table class="table display responsive nowrap table-striped table-bordere" style="width:100%"
+            <table class="table display responsive nowrap table-striped" style="width:100%"
                 id="tableKriteria">
                 <thead class="thead-dark">
                     <tr>
@@ -47,7 +47,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="kriteria"> Kriteria </label>
-                                <input type="text" class="form-control" id="kriteria" name="kriteria" maxlength="15">
+                                <input type="text" class="form-control" id="kriteria" name="kriteria" maxlength="30">
                                 <small class="form-text text-danger kriteria"></small>
                             </div>
                         </div>

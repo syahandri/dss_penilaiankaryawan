@@ -37,6 +37,14 @@
 <script src="<?= base_url(); ?>assets/vendor/datatables/responsive.bootstrap4.min.js"></script>
 <script src="<?= base_url(); ?>assets/vendor/datatables/fixedHeader.bootstrap4.min.js"></script>
 <script src="<?= base_url(); ?>assets/vendor/datatables/fixedColumns.bootstrap4.min.js"></script>
+<script src="<?= base_url(); ?>assets/vendor/datatables/dataTables.button.js"></script>
+<script src="<?= base_url(); ?>assets/vendor/datatables/buttonPrint.js"></script>
+<script src="<?//= base_url(); ?>assets/vendor/datatables/button.bootstrap4.js"></script>
+<!-- <script src="<?//= base_url(); ?>assets/vendor/datatables/buttonExport.js"></script> -->
+<!-- <script src="<?//= base_url(); ?>assets/vendor/datatables/jszip.min.js"></script>
+<script src="<?//= base_url(); ?>assets/vendor/datatables/pdfmake.min.js"></script>
+<script src="<?//= base_url(); ?>assets/vendor/datatables/vfs_fonts.js"></script> -->
+
 
 
 <!-- Core plugin JavaScript-->
@@ -51,17 +59,25 @@
 <!-- Font Awesome -->
 <script src="<?= base_url(); ?>assets/vendor/fontawesome-free/js/all.min.js"></script>
 
+<!-- datepicker jquery -->
+<script src="<?= base_url(); ?>assets/js/jquery-ui.min.js"></script>
+
 
 <!-- Script data processing -->
 <script src="<?= base_url(); ?>assets/js/buatan-sendiri/kriteriaScript.js"></script>
 <script src="<?= base_url(); ?>assets/js/buatan-sendiri/subkriteriaScript.js"></script>
 <script src="<?= base_url(); ?>assets/js/buatan-sendiri/karyawanScript.js"></script>
 <script src="<?= base_url(); ?>assets/js/buatan-sendiri/profileScript.js"></script>
+<script src="<?= base_url(); ?>assets/js/buatan-sendiri/penilaianScript.js"></script>
+<script src="<?= base_url(); ?>assets/js/buatan-sendiri/hasil_penilaianScript.js"></script>
+<script src="<?= base_url(); ?>assets/js/buatan-sendiri/homeScript.js"></script>
 
 
 
-<!-- Page level plugins -->
-<!-- <script src="vendor/chart.js/Chart.min.js"></script> -->
+<!-- chart -->
+<!-- <script src="<?= base_url(); ?>assets/vendor/chart/chart.js"></script> -->
+<!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
+<script src="<?= base_url(); ?>assets/vendor/chart/jquery.canvasjs.min.js"></script>
 
 <!-- Page level custom scripts -->
 <!-- <script src="js/demo/chart-area-demo.js"></script> -->
