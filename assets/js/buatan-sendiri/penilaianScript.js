@@ -1,5 +1,4 @@
-$(document).ready(function () {
-
+$(function () {
     // Fetch Data Table
     let table = $('#tablePenilaian').DataTable({
         "serverSide": true, // serverside datatable

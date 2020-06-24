@@ -1,12 +1,10 @@
-$(document).ready(function () {
-	let table;
-
+$(function () {
 	// variabel fungsi, akan diisi simpan / ubah (tergantung button yg diklik)
 	let fungsi;
 
 	// Tabel Kriteria
 	// Fetch Data Table
-	table = $('#tableSubKriteria').DataTable({
+	let table = $('#tableSubKriteria').DataTable({
 		"serverSide": true,
 		"responsive": true,
 		"ordering": true, // Set true agar bisa di sorting
@@ -103,7 +101,7 @@ $(document).ready(function () {
 		$('.modal-footer .buttonSubmit').html('<i class="fas fa-edit"></i> Ubah data');
 
 		$('.kodesubKriteria, .kodeKriteria, .subKriteria, .nilai').html('');
-		
+
 		$('#formSubKriteria')[0].reset(); // reset form on modals
 		$('#modal_subKriteria').modal('show'); // show bootstrap modal when complete loaded
 		$('#kodesubKriteria').attr('readonly', true);

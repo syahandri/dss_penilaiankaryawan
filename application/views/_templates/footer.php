@@ -39,9 +39,9 @@
 <script src="<?= base_url(); ?>assets/vendor/datatables/fixedColumns.bootstrap4.min.js"></script>
 <script src="<?= base_url(); ?>assets/vendor/datatables/dataTables.button.js"></script>
 <script src="<?= base_url(); ?>assets/vendor/datatables/buttonPrint.js"></script>
-<script src="<?//= base_url(); ?>assets/vendor/datatables/button.bootstrap4.js"></script>
-<!-- <script src="<?//= base_url(); ?>assets/vendor/datatables/buttonExport.js"></script> -->
-<!-- <script src="<?//= base_url(); ?>assets/vendor/datatables/jszip.min.js"></script>
+<script src="<?= base_url(); ?>assets/vendor/datatables/button.bootstrap4.js"></script>
+<!-- <script src="<?//= base_url(); ?>assets/vendor/datatables/buttonExport.js"></script>
+<script src="<?//= base_url(); ?>assets/vendor/datatables/jszip.min.js"></script>
 <script src="<?//= base_url(); ?>assets/vendor/datatables/pdfmake.min.js"></script>
 <script src="<?//= base_url(); ?>assets/vendor/datatables/vfs_fonts.js"></script> -->
 

@@ -1,12 +1,10 @@
-$(document).ready(function () {
-	let table;
-
+$(function () {
 	// variabel fungsi, akan diisi simpan / ubah (tergantung button yg diklik)
 	let fungsi;
 
 	// Tabel Kriteria
 	// Fetch Data Table
-	table = $('#tableKaryawan').DataTable({
+	let table = $('#tableKaryawan').DataTable({
 		"serverSide": true,
 		"responsive": true,
 		"ordering": true, // Set true agar bisa di sorting

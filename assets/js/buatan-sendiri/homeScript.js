@@ -1,4 +1,4 @@
-window.onload = function () {
+$(function () {
   load_data();
 
   let table = $('#tablePenilaianHome').DataTable({
@@ -13,33 +13,25 @@ window.onload = function () {
       "type": "POST"
     },
 
-    "columnDefs": [
-      {
-        responsivePriority: 10001,
-        targets: 2
-      }
-    ],
+    "columnDefs": [{
+      responsivePriority: 10001,
+      targets: 2
+    }],
 
     fixedHeader: true,
     fixedColumn: true
   })
-  
-  $("#tablePenilaianHome_filter > label > input[type='search']").prop('type','hidden');
+
+  $("#tablePenilaianHome_filter > label > input[type='search']").prop('type', 'hidden');
   $("#tablePenilaianHome_filter > label").remove();
+
   table.search($('#filterTgl').val()).draw();
 
   $('#filterTgl').change(function () {
-    let tgl = $(this).val()
-    if (tgl != '' || tgl != '--- Pilih Tanggal ---') {
-      load_data();
-      table.search($(this).val()).draw();
-    }
+    load_data();
+    table.search($(this).val()).draw();
   })
-}
-
-$(document).ready(function () {
-  load_data();
-
+  
   // jumlah karyawan
   $.ajax({
     url: 'home/countKaryawan',

@@ -1,6 +1,4 @@
-$(document).ready(function () {
-	let table;
-
+$(function () {
 	// variabel fungsi, akan diisi simpan / ubah (tergantung button yg diklik)
 	let fungsi;
 
@@ -12,7 +10,7 @@ $(document).ready(function () {
 		"ordering": true, // Set true agar bisa di sorting
 		"pagingType": "full_numbers",
 		"order": [],
-		
+
 		"ajax": {
 			"url": "kriteria/getKriteria/", // URL file untuk proses select datanya
 			"type": "POST"

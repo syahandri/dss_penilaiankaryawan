@@ -1,5 +1,4 @@
-$('#formProfile').ready(function () {
-
+$(function () {
     let nip = $('.profile').attr('id');
 
     $('.file-error').html('* pastikan unggah file gambar (".jpeg", ".jpg", ".png", ".gif") ');
