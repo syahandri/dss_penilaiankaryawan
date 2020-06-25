@@ -32,6 +32,9 @@
     <!-- datepicker css -->
     <link rel="stylesheet" href="<?= base_url(); ?>assets/css/jquery-ui.min.css">
 
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="<?= base_url(); ?>assets/css/stylePage.css">
+
 </head>
 
 <body id="page-top">
@@ -40,7 +43,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="sidebar">
+        <ul class="navbar-nav  sidebar sidebar-dark accordion" id="sidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url(); ?>">

@@ -1,0 +1,55 @@
+.body-background {
+    background-image: url('../img/work.jpeg');
+    background-attachment: fixed;
+}
+
+.btn {
+    background-color: #91B9AE;
+    border-color: #213051;
+}
+
+.btn:hover {
+    background-color: #213051;
+    border-color: #213051;
+}
+
+
+
+form>div>div>input {
+    border: 0px solid !important;
+    background-color: transparent !important;
+    /* margin-top: -3px; */
+
+}
+
+form>div>div>input:focus {
+    border: 0px solid !important;
+    /* border-color: #2B7873 !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important; */
+    background-color: transparent !important;
+    outline: 0px !important;
+    -webkit-appearance: none !important;
+    box-shadow: none !important;
+}
+
+
+.card {
+    background-color: #2E4263;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+    opacity: .8;
+}
+
+.info-login {
+    font-weight: 50;
+    text-shadow: 2px 2px 4px #000000;
+    letter-spacing: 2px;
+    color: #ffffff;
+    padding-top: 50px;
+    padding-left: 50px;
+}
+
+hr.input {
+    margin-top: -3px;
+    border: 1px solid white;
+    border-radius: 2px;
+}
