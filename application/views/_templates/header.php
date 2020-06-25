@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link rel="icon" type="image/png" href="<?= base_url(); ?>assets/img/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="<?= base_url(); ?>assets/img/favicon-32x32.png" size="32x32">
 
     <title><?= $judul; ?></title>
 
