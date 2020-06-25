@@ -14,7 +14,7 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Selamat Datang</h1>
                                 </div>
-                                <form class="user" method="post" action="<?= base_url('auth/authentication') ?>">
+                                <form class="user" method="post" action="<?= base_url('auth') ?>">
                                     <div class="form-group text-center">
                                         <small class="form-text text-danger"><?= $this->session->flashdata('msg_nip'); ?></small>
                                     </div>

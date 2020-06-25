@@ -51,7 +51,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item <?php if ($aktif == 'home') : echo 'active';
+            <li class="nav-item <?php if ($judul == 'Beranda') : echo 'active';
                                 endif; ?>">
                 <a class="nav-link" href="<?= base_url(); ?>">
                     <i class="fas fa-fw fa-home"></i>
@@ -67,7 +67,7 @@
             </div>
 
             <!-- Nav Item & Pages Collapse Menu -->
-            <li class="nav-item <?php if ($aktif == 'kriteria') : echo 'active';
+            <li class="nav-item <?php if ($judul == 'Daftar Kriteria' || $judul == 'Daftar Sub Kriteria') : echo 'active';
                                 endif; ?>">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menuKriteria" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-bars"></i>
@@ -82,7 +82,7 @@
                 </div>
             </li>
 
-            <li class="nav-item <?php if ($aktif == 'karyawan') : echo 'active';
+            <li class="nav-item <?php if ($judul == 'Data Karyawan') : echo 'active';
                                 endif; ?>">
                 <a class="nav-link" href="<?= base_url('karyawan'); ?>">
                     <i class="fas fa-fw fa-users"></i>
@@ -90,7 +90,7 @@
                 </a>
             </li>
 
-            <li class="nav-item <?php if ($aktif == 'penilaian') : echo 'active';
+            <li class="nav-item <?php if ($judul == 'Form Penilaian Karyawan') : echo 'active';
                                 endif; ?>">
                 <a class="nav-link" href="<?= base_url('penilaian'); ?>">
                     <i class="fas fa-fw fa-table"></i>
@@ -107,7 +107,7 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item <?php if ($aktif == 'laporan') : echo 'active';
+            <li class="nav-item <?php if ($judul == 'Hasil Penilaian Karyawan') : echo 'active';
                                 endif; ?>">
                 <a class="nav-link" href="<?= base_url('hasil_penilaian'); ?>">
                     <i class="fas fa-fw fa-book-open"></i>
