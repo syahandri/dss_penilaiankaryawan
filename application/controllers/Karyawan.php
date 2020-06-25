@@ -1,30 +1,35 @@
 <?php
 
-class Karyawan extends CI_Controller {
+class Karyawan extends CI_Controller
+{
 
-    public function __construct () {
-        parent:: __construct();
+    public function __construct()
+    {
+        parent::__construct();
         if ($this->session->userdata('masuk') != TRUE) {
             redirect(base_url('auth'));
         }
         $this->load->model('Karyawan_Model');
     }
 
-    public function index () {
+    public function index()
+    {
         $data['judul'] = 'Data Karyawan';
+        $data['aktif'] = 'karyawan';
 
         $this->load->view('_templates/header', $data);
         $this->load->view('karyawan/index', $data);
         $this->load->view('_templates/footer');
     }
 
-    public function getKaryawan () {
+    public function getKaryawan()
+    {
         $list = $this->Karyawan_Model->getDataTables();
         $data = [];
         $no   = $this->input->post('start');
 
         foreach ($list as $karyawan) {
-                 $row = [];
+            $row = [];
             $row[]    = ++$no;
             $row[]    = $karyawan->nip;
             $row[]    = $karyawan->nama_karyawan;
@@ -32,11 +37,11 @@ class Karyawan extends CI_Controller {
             $row[]    = $karyawan->email;
             $row[]    = $karyawan->no_telp;
             $row[]    = $karyawan->alamat;
-            
+
             //add action in table
             $row[] = '
             <div    class = "d-sm-flex bd-highlight align-content-center justify-content-around">
-            <button type  = "button" id               = "'. $karyawan->nip . '"class = "btn btn-sm updateKaryawan">
+            <button type  = "button" id               = "' . $karyawan->nip . '"class = "btn btn-sm updateKaryawan">
             <i      class = "fas fa-pencil-alt" style = "color:blue"></i>
             </buton>
            
@@ -55,16 +60,18 @@ class Karyawan extends CI_Controller {
             "recordsFiltered" => $this->Karyawan_Model->countFiltered(),
             "data"            => $data,
         ];
-    
+
         echo json_encode($output);
     }
 
-    public function getKaryawanById () {
+    public function getKaryawanById()
+    {
         $data = $this->Karyawan_Model->getKaryawanById($this->input->post('id'));
         echo json_encode($data);
     }
 
-    public function tambahKaryawan () {
+    public function tambahKaryawan()
+    {
         $rules = [
             [
                 'field' => 'nip',
@@ -108,21 +115,21 @@ class Karyawan extends CI_Controller {
                 'alamat' => form_error('alamat'),
                 'email'  => form_error('email'),
                 'telp'   => form_error('telp')
-            ];   
+            ];
 
             echo json_encode($data);
         } else {
             $this->Karyawan_Model->tambahKaryawan();
             echo json_encode(array("status" => TRUE));
         }
-
     }
 
     // method check email untuk ubah data (karena email is_unique)
-    function check_email ($email) {
+    function check_email($email)
+    {
         if ($this->input->post('nip')) {
             $nip = $this->input->post('nip');
-         } else {
+        } else {
             $nip = '';
         }
 
@@ -136,7 +143,8 @@ class Karyawan extends CI_Controller {
         return $response;
     }
 
-    public function ubahKaryawan () {
+    public function ubahKaryawan()
+    {
         $rules = [
             [
                 'field' => 'nip',
@@ -180,7 +188,7 @@ class Karyawan extends CI_Controller {
                 'alamat' => form_error('alamat'),
                 'email'  => form_error('email'),
                 'telp'   => form_error('telp')
-            ];   
+            ];
 
             echo json_encode($data);
         } else {
@@ -189,7 +197,8 @@ class Karyawan extends CI_Controller {
         }
     }
 
-    public function hapusKaryawan () {
+    public function hapusKaryawan()
+    {
         $this->Karyawan_Model->hapusKaryawan($this->input->post('id'));
         echo json_encode(["status" => TRUE]);
     }

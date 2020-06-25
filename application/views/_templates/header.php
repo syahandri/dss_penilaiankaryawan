@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="<?= base_url(); ?>assets/vendor/datatables/button.bootstrap4.css">
 
     <!-- datepicker css -->
-     <link rel="stylesheet" href="<?= base_url(); ?>assets/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="<?= base_url(); ?>assets/css/jquery-ui.min.css">
 
 </head>
 
@@ -51,7 +51,8 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item <?php if ($aktif == 'home') : echo 'active';
+                                endif; ?>">
                 <a class="nav-link" href="<?= base_url(); ?>">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Beranda</span></a>
@@ -66,9 +67,9 @@
             </div>
 
             <!-- Nav Item & Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menuKriteria"
-                    aria-expanded="true" aria-controls="collapseTwo">
+            <li class="nav-item <?php if ($aktif == 'kriteria') : echo 'active';
+                                endif; ?>">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menuKriteria" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-bars"></i>
                     <span>Kriteria</span>
                 </a>
@@ -81,14 +82,16 @@
                 </div>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item <?php if ($aktif == 'karyawan') : echo 'active';
+                                endif; ?>">
                 <a class="nav-link" href="<?= base_url('karyawan'); ?>">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Karyawan</span>
                 </a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item <?php if ($aktif == 'penilaian') : echo 'active';
+                                endif; ?>">
                 <a class="nav-link" href="<?= base_url('penilaian'); ?>">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Penilaian Karyawan</span>
@@ -104,7 +107,8 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item <?php if ($aktif == 'laporan') : echo 'active';
+                                endif; ?>">
                 <a class="nav-link" href="<?= base_url('hasil_penilaian'); ?>">
                     <i class="fas fa-fw fa-book-open"></i>
                     <span>Laporan Penilaian</span>
@@ -143,19 +147,13 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span
-                                    class="mr-2 d-none d-lg-inline text-gray-600 small profile-name"><?= $this->session->userdata('ses_nama'); ?></span>
-                                <img class="img-profile profile-image rounded-circle"
-                                    src="assets/img/upload/<?= $this->session->userdata('ses_foto'); ?>">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small profile-name"><?= $this->session->userdata('ses_nama'); ?></span>
+                                <img class="img-profile profile-image rounded-circle" src="assets/img/upload/<?= $this->session->userdata('ses_foto'); ?>">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item profile" href="<?= base_url('profile'); ?>"
-                                    id="<?= $this->session->userdata('ses_nip'); ?>"> <i
-                                        class="fas fa-cogs fa-sm fa-fw mr-2 text-dark-400"></i> Ubah Profile
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item profile" href="<?= base_url('profile'); ?>" id="<?= $this->session->userdata('ses_nip'); ?>"> <i class="fas fa-cogs fa-sm fa-fw mr-2 text-dark-400"></i> Ubah Profile
                                 </a>
 
                                 <div class="dropdown-divider"></div>

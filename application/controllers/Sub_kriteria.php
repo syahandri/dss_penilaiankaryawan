@@ -1,9 +1,11 @@
 <?php
 
-class Sub_kriteria extends CI_Controller {
+class Sub_kriteria extends CI_Controller
+{
 
-    public function __construct () {
-        parent:: __construct();
+    public function __construct()
+    {
+        parent::__construct();
         if ($this->session->userdata('masuk') != TRUE) {
             redirect(base_url('auth'));
         }
@@ -11,31 +13,34 @@ class Sub_kriteria extends CI_Controller {
         $this->load->model('Sub_kriteria_Model');
     }
 
-    public function index () {
+    public function index()
+    {
         $data['judul'] = 'Daftar Sub Kriteria';
+        $data['aktif'] = 'kriteria';
 
         $this->load->view('_templates/header', $data);
         $this->load->view('sub_kriteria/index', $data);
         $this->load->view('_templates/footer');
     }
 
-    public function getSubKriteria () {
+    public function getSubKriteria()
+    {
         $list = $this->Sub_kriteria_Model->getDataTables();
         $data = [];
         $no   = $this->input->post('start');
 
         foreach ($list as $subkriteria) {
-                 $row = [];
+            $row = [];
             $row[]    = ++$no;
             $row[]    = $subkriteria->kode_subkriteria;
             $row[]    = $subkriteria->kode_kriteria;
             $row[]    = $subkriteria->subkriteria;
             $row[]    = $subkriteria->nilai;
-            
+
             //add action in table
             $row[] = '
             <div    class = "d-sm-flex bd-highlight align-content-center justify-content-around">
-            <button type  = "button" id               = "'. $subkriteria->kode_subkriteria . '"class = "btn btn-sm updateSubKriteria">
+            <button type  = "button" id               = "' . $subkriteria->kode_subkriteria . '"class = "btn btn-sm updateSubKriteria">
             <i      class = "fas fa-pencil-alt" style = "color:blue"></i>
             </buton>
            
@@ -54,16 +59,18 @@ class Sub_kriteria extends CI_Controller {
             "recordsFiltered" => $this->Sub_kriteria_Model->countFiltered(),
             "data"            => $data,
         ];
-    
+
         echo json_encode($output);
     }
 
-    public function getSubKriteriaById () {
+    public function getSubKriteriaById()
+    {
         $data = $this->Sub_kriteria_Model->getSubKriteriaById($this->input->post('id'));
         echo json_encode($data);
     }
 
-    public function kodeOtomatis () {
+    public function kodeOtomatis()
+    {
         $data = $this->Sub_kriteria_Model->kodeOtomatis();
 
         $data['kodeUrut'] = $data['kode_subkriteria'];
@@ -77,7 +84,8 @@ class Sub_kriteria extends CI_Controller {
         echo json_encode($data);
     }
 
-    public function getKodeKriteria () {
+    public function getKodeKriteria()
+    {
         $data = $this->Sub_kriteria_Model->getKodeKriteria();
 
         $index = 0;
@@ -86,11 +94,12 @@ class Sub_kriteria extends CI_Controller {
             "kriteria" => "--- Pilih Salah Satu ---"
         ];
 
-        array_splice($data, $index, 0 , $array);
+        array_splice($data, $index, 0, $array);
         echo json_encode($data);
     }
 
-    public function tambahSubKriteria () {
+    public function tambahSubKriteria()
+    {
         $rules = [
             [
                 'field' => 'kodeKriteria',
@@ -122,17 +131,17 @@ class Sub_kriteria extends CI_Controller {
                 'kodesubKriteria' => form_error('kodesubKriteria'),
                 'subKriteria'     => form_error('subKriteria'),
                 'nilai'           => form_error('nilai')
-            ];   
+            ];
 
             echo json_encode($data);
         } else {
             $this->Sub_kriteria_Model->tambahsubKriteria();
             echo json_encode(array("status" => TRUE));
         }
-
     }
 
-    public function ubahSubKriteria () {
+    public function ubahSubKriteria()
+    {
         $rules = [
             [
                 'field' => 'kodeKriteria',
@@ -163,7 +172,7 @@ class Sub_kriteria extends CI_Controller {
                 'kodesubKriteria' => form_error('kodesubKriteria'),
                 'subKriteria'     => form_error('subKriteria'),
                 'nilai'           => form_error('nilai')
-            ];   
+            ];
 
             echo json_encode($data);
         } else {
@@ -172,7 +181,8 @@ class Sub_kriteria extends CI_Controller {
         }
     }
 
-    public function hapusSubKriteria () {
+    public function hapusSubKriteria()
+    {
         $this->Sub_kriteria_Model->hapusSubKriteria($this->input->post('id'));
         echo json_encode(["status" => TRUE]);
     }

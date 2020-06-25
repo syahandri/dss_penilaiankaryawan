@@ -11,6 +11,7 @@ class Hasil_penilaian extends CI_Controller {
 
     public function index () {
         $data['judul'] = 'Hasil Penilaian Karyawan';
+        $data['aktif'] = 'laporan';
 
         $this->load->view('_templates/header', $data);
         $this->load->view('hasil_penilaian/index', $data);
@@ -54,5 +55,3 @@ class Hasil_penilaian extends CI_Controller {
 
     }
 }
-
-?>
