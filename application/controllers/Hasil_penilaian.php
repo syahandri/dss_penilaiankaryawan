@@ -42,17 +42,6 @@ class Hasil_penilaian extends CI_Controller {
     
         echo json_encode($output);
     }
-
-    public function test () {
-        $order = ['tgl_penilaian' => 'desc', 'nip' => 'asc'];
-
-        // foreach ($order as $key => $value) {
-        //     echo $key . ' => ' . $value . '<br>';
-        // }
-
-        echo $order['nip'];
-
-    }
 }
 
 ?>
