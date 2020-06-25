@@ -1,4 +1,7 @@
 $(function () {
+    if ($('.judul').html() == 'Form Penilaian Karyawan') {
+    	$('.penilaian').addClass('active');
+    }
     // Fetch Data Table
     let table = $('#tablePenilaian').DataTable({
         "serverSide": true, // serverside datatable

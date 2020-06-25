@@ -43,15 +43,15 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="sidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url(); ?>">
+            <div class="sidebar-brand d-flex align-items-center justify-content-center">
                 <div class="sidebar-brand-text">Penilaian Kinerja Karyawan</div>
-            </a>
+            </div>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
+            <li class="nav-item beranda">
                 <a class="nav-link" href="<?= base_url(); ?>">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Beranda</span></a>
@@ -66,7 +66,7 @@
             </div>
 
             <!-- Nav Item & Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item kriteria">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menuKriteria"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-bars"></i>
@@ -75,20 +75,20 @@
                 <div id="menuKriteria" class="collapse" data-parent="#sidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Menu Kriteria:</h6>
-                        <a class="collapse-item" href="<?= base_url('kriteria'); ?>">Tambah Kriteria</a>
-                        <a class="collapse-item" href="<?= base_url('sub_kriteria'); ?>">Tambah Sub Kriteria</a>
+                        <a class="collapse-item" href="<?= base_url('kriteria'); ?>"><i class="fas fa-fw fa-bars"></i> Daftar Kriteria</a>
+                        <a class="collapse-item" href="<?= base_url('sub_kriteria'); ?>"><i class="fas fa-fw fa-archive"></i> Daftar Sub Kriteria</a>
                     </div>
                 </div>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item karyawan">
                 <a class="nav-link" href="<?= base_url('karyawan'); ?>">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Karyawan</span>
                 </a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item penilaian">
                 <a class="nav-link" href="<?= base_url('penilaian'); ?>">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Penilaian Karyawan</span>
@@ -104,7 +104,7 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item laporan">
                 <a class="nav-link" href="<?= base_url('hasil_penilaian'); ?>">
                     <i class="fas fa-fw fa-book-open"></i>
                     <span>Laporan Penilaian</span>
@@ -136,7 +136,7 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <h3><?= $judul; ?></h3>
+                    <h3 class="judul"><?= $judul; ?></h3>
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">

@@ -12,6 +12,10 @@ $.ajax({
 	}
 })
 
+if ($('.judul').html() == 'Beranda') {
+	$('.beranda').addClass('active');
+}
+
 $(document).ready(function () {
 	load_data();
 	dataTable();

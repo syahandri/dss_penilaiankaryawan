@@ -1,4 +1,7 @@
 $(function () {
+	if ($('.judul').html() == 'Data Karyawan') {
+		$('.karyawan').addClass('active');
+	}
 	// variabel fungsi, akan diisi simpan / ubah (tergantung button yg diklik)
 	let fungsi;
 
