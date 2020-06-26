@@ -1,0 +1,16 @@
+#sidebar {
+    background-color: #2E4263 !important;
+}
+
+.card-header {
+    background-color: #91B9AE !important;
+}
+
+.card {
+    border-color: #91B9AE !important;
+}
+
+.btn-primary,
+.badge-success {
+    background-color: #2E4263 !important;
+}

@@ -13,6 +13,7 @@ class Penilaian extends CI_Controller {
 
      public function index () {
         $data['judul'] = 'Form Penilaian Karyawan';
+        $data['aktif'] = 'penilaian';
 
         $this->load->view('_templates/header', $data);
         $this->load->view('penilaian/index', $data);
@@ -154,5 +155,3 @@ class Penilaian extends CI_Controller {
         echo json_encode(["status" => TRUE]);
     }
 }
-
-?>

@@ -30,7 +30,10 @@
     <link rel="stylesheet" href="<?= base_url(); ?>assets/vendor/datatables/button.bootstrap4.css">
 
     <!-- datepicker css -->
-     <link rel="stylesheet" href="<?= base_url(); ?>assets/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="<?= base_url(); ?>assets/css/jquery-ui.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="<?= base_url(); ?>assets/css/stylePage.css">
 
 </head>
 
@@ -40,7 +43,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="sidebar">
+        <ul class="navbar-nav  sidebar sidebar-dark accordion" id="sidebar">
 
             <!-- Sidebar - Brand -->
             <div class="sidebar-brand d-flex align-items-center justify-content-center">
@@ -143,19 +146,13 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span
-                                    class="mr-2 d-none d-lg-inline text-gray-600 small profile-name"><?= $this->session->userdata('ses_nama'); ?></span>
-                                <img class="img-profile profile-image rounded-circle"
-                                    src="assets/img/upload/<?= $this->session->userdata('ses_foto'); ?>">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small profile-name"><?= $this->session->userdata('ses_nama'); ?></span>
+                                <img class="img-profile profile-image rounded-circle" src="assets/img/upload/<?= $this->session->userdata('ses_foto'); ?>">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item profile" href="<?= base_url('profile'); ?>"
-                                    id="<?= $this->session->userdata('ses_nip'); ?>"> <i
-                                        class="fas fa-cogs fa-sm fa-fw mr-2 text-dark-400"></i> Ubah Profile
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item profile" href="<?= base_url('profile'); ?>" id="<?= $this->session->userdata('ses_nip'); ?>"> <i class="fas fa-cogs fa-sm fa-fw mr-2 text-dark-400"></i> Ubah Profile
                                 </a>
 
                                 <div class="dropdown-divider"></div>
