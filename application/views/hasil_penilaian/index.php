@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col">
             <table class="table display responsive nowrap table-striped" style="width:100%" id="tableHasilPenilaian">

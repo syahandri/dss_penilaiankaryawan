@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
     <button class="btn btn-primary mt-3 mb-3" id="btnTambahKaryawan"><i class="fas fa-plus"></i> Tambah Data Karyawan</button>
 
     <div class="row">

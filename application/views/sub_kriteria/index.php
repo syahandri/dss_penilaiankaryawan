@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
     <button class="btn btn-primary mt-3 mb-3" id="btnTambahSubKriteria"><i class="fas fa-plus"></i> Tambah Sub Kriteria</button>
 
     <div class="row">
