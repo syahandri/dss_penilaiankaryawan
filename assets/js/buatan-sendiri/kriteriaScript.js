@@ -1,7 +1,7 @@
 $(function () {
 
 	if ($('.judul').html() == 'Daftar Kriteria' || $('.judul').html() == 'Daftar Sub Kriteria') {
-		$('.kriteria').addClass('active');
+		$('.kriterias').addClass('active');
 	}
 
 	// variabel fungsi, akan diisi simpan / ubah (tergantung button yg diklik)

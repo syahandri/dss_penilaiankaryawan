@@ -69,15 +69,14 @@
             </div>
 
             <!-- Nav Item & Pages Collapse Menu -->
-            <li class="nav-item kriteria">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menuKriteria"
-                    aria-expanded="true" aria-controls="collapseTwo">
+            <li class="nav-item kriterias">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menuKriteria" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-bars"></i>
                     <span>Kriteria</span>
                 </a>
                 <div id="menuKriteria" class="collapse" data-parent="#sidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Menu Kriteria:</h6>
+                        <h6 class="collapse-header">Menu Kriteria: </h6>
                         <a class="collapse-item" href="<?= base_url('kriteria'); ?>"><i class="fas fa-fw fa-bars"></i> Daftar Kriteria</a>
                         <a class="collapse-item" href="<?= base_url('sub_kriteria'); ?>"><i class="fas fa-fw fa-archive"></i> Daftar Sub Kriteria</a>
                     </div>
