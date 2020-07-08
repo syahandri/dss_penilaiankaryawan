@@ -207,11 +207,29 @@ $(function () {
 					type: "POST",
 					dataType: "JSON",
 					success: function (data) {
-						Swal.fire({
-							title: 'Data Kriteria',
-							text: 'Berhasil Dihapus',
-							icon: 'success'
-						});
+						if (data.code != 0) {
+
+							$('.hapus-alert').html(`
+							<div class="alert alert-danger alert-dismissible fade show" role="alert">
+								<strong>` + data.code + `</strong>` +  ` - `  + data.message +
+								`<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>`
+							+
+							`<div class="alert alert-danger alert-dismissible fade show" role="alert">
+								Data Kriteria tidak dapat dihapus karena terhubung dengan data di penilaian
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>`)
+						} else {
+							Swal.fire({
+								title: 'Data Kriteria',
+								text: 'Berhasil Dihapus',
+								icon: 'success'
+							});
+						}
 						reloadTable();
 					}
 				});

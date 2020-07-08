@@ -199,7 +199,9 @@ class Karyawan extends CI_Controller
 
     public function hapusKaryawan()
     {
-        $this->Karyawan_Model->hapusKaryawan($this->input->post('id'));
-        echo json_encode(["status" => TRUE]);
+        if (!$this->Karyawan_Model->hapusKaryawan($this->input->post('id'))) {
+            $error = $this->db->error();
+            echo json_encode($error);
+        }
     }
 }

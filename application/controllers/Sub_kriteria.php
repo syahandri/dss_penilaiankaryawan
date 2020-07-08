@@ -183,7 +183,9 @@ class Sub_kriteria extends CI_Controller
 
     public function hapusSubKriteria()
     {
-        $this->Sub_kriteria_Model->hapusSubKriteria($this->input->post('id'));
-        echo json_encode(["status" => TRUE]);
+        if (!$this->Sub_kriteria_Model->hapusSubKriteria($this->input->post('id'))) {
+            $error = $this->db->error();
+            echo json_encode($error);
+        }
     }
 }
