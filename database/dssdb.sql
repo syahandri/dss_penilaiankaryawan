@@ -2,8 +2,8 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Waktu pembuatan: 20 Jun 2020 pada 09.26
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 08 Jul 2020 pada 13.34
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.6
 
@@ -42,10 +42,10 @@ CREATE TABLE `detail_penilaian` (
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `nilaiMPE`
+-- Stand-in struktur untuk tampilan `nilaimpe`
 -- (Lihat di bawah untuk tampilan aktual)
 --
-CREATE TABLE `nilaiMPE` (
+CREATE TABLE `nilaimpe` (
 `tgl_penilaian` date
 ,`nip` bigint(20)
 ,`nama_karyawan` varchar(30)
@@ -55,10 +55,10 @@ CREATE TABLE `nilaiMPE` (
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `nilai_alternatifMPE`
+-- Stand-in struktur untuk tampilan `nilai_alternatifmpe`
 -- (Lihat di bawah untuk tampilan aktual)
 --
-CREATE TABLE `nilai_alternatifMPE` (
+CREATE TABLE `nilai_alternatifmpe` (
 `tgl_penilaian` date
 ,`nip` bigint(20)
 ,`nama_karyawan` varchar(30)
@@ -84,7 +84,8 @@ CREATE TABLE `tbladmin` (
 
 INSERT INTO `tbladmin` (`nip`, `nama`, `pass`, `foto`) VALUES
 ('102233445566778890', 'Abi Firmansyah', 'e10adc3949ba59abbe56e057f20f883e', '102233445566778890.png'),
-('102233445566778891', 'Ahmad Andrian Syah', 'd8578edf8458ce06fbc5bb76a58c5ca4', '102233445566778891.jpg');
+('102233445566778891', 'Ahmad Andrian Syah', 'd8578edf8458ce06fbc5bb76a58c5ca4', '102233445566778891.png'),
+('123456789', 'administrator', '21232f297a57a5a743894a0e4a801fc3', '123456789.png');
 
 -- --------------------------------------------------------
 
@@ -153,22 +154,26 @@ CREATE TABLE `tblpenilaian` (
 --
 
 INSERT INTO `tblpenilaian` (`id`, `tgl_penilaian`, `nip`, `kode_kriteria`, `kode_subkriteria`) VALUES
-(24, '2020-06-17', 343543244167107, 'KTR001', 'SUB003'),
-(25, '2020-06-17', 2472442705931151, 'KTR001', 'SUB002'),
-(26, '2020-06-17', 343543244167107, 'KTR002', 'SUB009'),
-(27, '2020-06-17', 343543244167107, 'KTR003', 'SUB013'),
-(28, '2020-06-17', 343543244167107, 'KTR004', 'SUB018'),
-(29, '2020-06-17', 2472442705931151, 'KTR002', 'SUB008'),
-(30, '2020-06-17', 2472442705931151, 'KTR003', 'SUB013'),
-(31, '2020-06-17', 2472442705931151, 'KTR004', 'SUB019'),
-(40, '2020-06-20', 343543244167107, 'KTR001', 'SUB004'),
-(41, '2020-06-20', 343543244167107, 'KTR002', 'SUB009'),
-(42, '2020-06-20', 343543244167107, 'KTR003', 'SUB014'),
-(43, '2020-06-20', 343543244167107, 'KTR004', 'SUB019'),
-(44, '2020-06-20', 5236051435906191, 'KTR001', 'SUB003'),
-(45, '2020-06-20', 5236051435906191, 'KTR002', 'SUB009'),
-(46, '2020-06-20', 5236051435906191, 'KTR003', 'SUB013'),
-(47, '2020-06-20', 5236051435906191, 'KTR004', 'SUB019');
+(49, '2020-06-26', 343543244167107, 'KTR001', 'SUB003'),
+(50, '2020-06-26', 343543244167107, 'KTR002', 'SUB009'),
+(51, '2020-06-26', 343543244167107, 'KTR003', 'SUB013'),
+(52, '2020-06-26', 343543244167107, 'KTR004', 'SUB018'),
+(53, '2020-06-26', 2472442705931151, 'KTR001', 'SUB002'),
+(54, '2020-06-26', 2472442705931151, 'KTR002', 'SUB009'),
+(55, '2020-06-26', 2472442705931151, 'KTR003', 'SUB014'),
+(56, '2020-06-26', 2472442705931151, 'KTR004', 'SUB019'),
+(57, '2020-06-26', 4485768968466969, 'KTR001', 'SUB003'),
+(58, '2020-06-26', 4485768968466969, 'KTR002', 'SUB008'),
+(59, '2020-06-26', 4485768968466969, 'KTR003', 'SUB014'),
+(60, '2020-06-26', 4485768968466969, 'KTR004', 'SUB019'),
+(61, '2020-06-26', 5236051435906191, 'KTR001', 'SUB001'),
+(62, '2020-06-26', 5236051435906191, 'KTR002', 'SUB008'),
+(63, '2020-06-26', 5236051435906191, 'KTR003', 'SUB013'),
+(64, '2020-06-26', 5236051435906191, 'KTR004', 'SUB018'),
+(65, '2020-06-26', 5290202532927555, 'KTR001', 'SUB004'),
+(66, '2020-06-26', 5290202532927555, 'KTR002', 'SUB008'),
+(67, '2020-06-26', 5290202532927555, 'KTR003', 'SUB013'),
+(68, '2020-06-26', 5290202532927555, 'KTR004', 'SUB018');
 
 -- --------------------------------------------------------
 
@@ -211,10 +216,10 @@ INSERT INTO `tblsubkriteria` (`kode_kriteria`, `kode_subkriteria`, `subkriteria`
 -- --------------------------------------------------------
 
 --
--- Stand-in struktur untuk tampilan `totalMPE`
+-- Stand-in struktur untuk tampilan `totalmpe`
 -- (Lihat di bawah untuk tampilan aktual)
 --
-CREATE TABLE `totalMPE` (
+CREATE TABLE `totalmpe` (
 `tgl_penilaian` date
 ,`total_mpe` double
 );
@@ -231,29 +236,29 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `nilaiMPE`
+-- Struktur untuk view `nilaimpe`
 --
-DROP TABLE IF EXISTS `nilaiMPE`;
+DROP TABLE IF EXISTS `nilaimpe`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `nilaiMPE`  AS  select `detail_penilaian`.`tgl_penilaian` AS `tgl_penilaian`,`detail_penilaian`.`nip` AS `nip`,`detail_penilaian`.`nama_karyawan` AS `nama_karyawan`,sum(`detail_penilaian`.`hasil_penilaian`) AS `nilai_mpe` from `detail_penilaian` group by `detail_penilaian`.`tgl_penilaian`,`detail_penilaian`.`nip` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `nilaimpe`  AS  select `detail_penilaian`.`tgl_penilaian` AS `tgl_penilaian`,`detail_penilaian`.`nip` AS `nip`,`detail_penilaian`.`nama_karyawan` AS `nama_karyawan`,sum(`detail_penilaian`.`hasil_penilaian`) AS `nilai_mpe` from `detail_penilaian` group by `detail_penilaian`.`tgl_penilaian`,`detail_penilaian`.`nip` ;
 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `nilai_alternatifMPE`
+-- Struktur untuk view `nilai_alternatifmpe`
 --
-DROP TABLE IF EXISTS `nilai_alternatifMPE`;
+DROP TABLE IF EXISTS `nilai_alternatifmpe`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `nilai_alternatifMPE`  AS  select `nilaiMPE`.`tgl_penilaian` AS `tgl_penilaian`,`nilaiMPE`.`nip` AS `nip`,`nilaiMPE`.`nama_karyawan` AS `nama_karyawan`,round(`nilaiMPE`.`nilai_mpe` / `totalMPE`.`total_mpe`,3) AS `nilai_alternatif_MPE` from (`nilaiMPE` join `totalMPE` on(`nilaiMPE`.`tgl_penilaian` = `totalMPE`.`tgl_penilaian`)) group by `nilaiMPE`.`tgl_penilaian`,`nilaiMPE`.`nip` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `nilai_alternatifmpe`  AS  select `nilaimpe`.`tgl_penilaian` AS `tgl_penilaian`,`nilaimpe`.`nip` AS `nip`,`nilaimpe`.`nama_karyawan` AS `nama_karyawan`,round(`nilaimpe`.`nilai_mpe` / `totalmpe`.`total_mpe`,3) AS `nilai_alternatif_MPE` from (`nilaimpe` join `totalmpe` on(`nilaimpe`.`tgl_penilaian` = `totalmpe`.`tgl_penilaian`)) group by `nilaimpe`.`tgl_penilaian`,`nilaimpe`.`nip` ;
 
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `totalMPE`
+-- Struktur untuk view `totalmpe`
 --
-DROP TABLE IF EXISTS `totalMPE`;
+DROP TABLE IF EXISTS `totalmpe`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `totalMPE`  AS  select `nilaiMPE`.`tgl_penilaian` AS `tgl_penilaian`,sum(`nilaiMPE`.`nilai_mpe`) AS `total_mpe` from `nilaiMPE` group by `nilaiMPE`.`tgl_penilaian` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `totalmpe`  AS  select `nilaimpe`.`tgl_penilaian` AS `tgl_penilaian`,sum(`nilaimpe`.`nilai_mpe`) AS `total_mpe` from `nilaimpe` group by `nilaimpe`.`tgl_penilaian` ;
 
 --
 -- Indexes for dumped tables
@@ -303,7 +308,7 @@ ALTER TABLE `tblsubkriteria`
 -- AUTO_INCREMENT untuk tabel `tblpenilaian`
 --
 ALTER TABLE `tblpenilaian`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -313,9 +318,9 @@ ALTER TABLE `tblpenilaian`
 -- Ketidakleluasaan untuk tabel `tblpenilaian`
 --
 ALTER TABLE `tblpenilaian`
-  ADD CONSTRAINT `tblpenilaian_ibfk_1` FOREIGN KEY (`nip`) REFERENCES `tblkaryawan` (`nip`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `tblpenilaian_ibfk_2` FOREIGN KEY (`kode_kriteria`) REFERENCES `tblkriteria` (`kode_kriteria`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `tblpenilaian_ibfk_3` FOREIGN KEY (`kode_subkriteria`) REFERENCES `tblsubkriteria` (`kode_subkriteria`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_kriteria` FOREIGN KEY (`kode_kriteria`) REFERENCES `tblkriteria` (`kode_kriteria`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_nip` FOREIGN KEY (`nip`) REFERENCES `tblkaryawan` (`nip`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_sub` FOREIGN KEY (`kode_subkriteria`) REFERENCES `tblsubkriteria` (`kode_subkriteria`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `tblsubkriteria`

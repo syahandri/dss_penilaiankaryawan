@@ -157,7 +157,9 @@ class Kriteria extends CI_Controller
 
     public function hapusKriteria()
     {
-        $this->Kriteria_Model->hapusKriteria($this->input->post('id'));
-        echo json_encode(array("status" => TRUE));
+        if (!$this->Kriteria_Model->hapusKriteria($this->input->post('id'))) {
+            $error = $this->db->error();
+            echo json_encode($error);
+        }
     }
 }

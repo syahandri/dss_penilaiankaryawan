@@ -4,6 +4,7 @@ class Home_Model extends CI_Model {
 
     public function getHasil ($tgl_penilaian) {
         $this->db->where('tgl_penilaian', $tgl_penilaian);
+        $this->db->order_by('nilai_alternatif_MPE', 'DESC');
         return $this->db->get('nilai_alternatifMPE')->result_array();
     }
 
