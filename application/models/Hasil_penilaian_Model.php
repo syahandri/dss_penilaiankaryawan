@@ -11,7 +11,7 @@ class Hasil_penilaian_Model extends CI_Model {
 
       // PAGINATION USING JQUERY DATA TABLES
       private function _get_datatables_query () {
-        $this->db->from('nilai_alternatifMPE');
+        $this->db->from('nilai_alternatifmpe');
         
         $i = 0;
         foreach ($this->column_search as $item) {
@@ -54,7 +54,7 @@ class Hasil_penilaian_Model extends CI_Model {
     }
 
     public function countAll () {
-        $this->db->from('nilai_alternatifMPE');
+        $this->db->from('nilai_alternatifmpe');
         return $this->db->count_all_results();
     }
 }
