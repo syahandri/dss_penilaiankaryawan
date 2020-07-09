@@ -1,13 +1,1 @@
-/application/cache/
-/application/core/
-/application/helpers/
-/application/hooks/
-/application/libraries/
-/application/logs/
-/application/third_party/
-/system/
 /user_guide/
-composer.json
-license.txt
-readme.rst
-.editorconfig
