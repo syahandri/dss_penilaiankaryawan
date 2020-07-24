@@ -1,150 +1,144 @@
 <?php
 
-class Coba extends CI_Controller {
+// class Coba extends CI_Controller {
 
-    public function __construct () {
-        parent::__construct();
+//     public function __construct () {
+//         parent::__construct();
 
-        $this->load->model('Coba_Model');
-    }
+//         $this->load->model('Coba_Model');
+//     }
 
-    public function index () {
-        $data['judul'] = 'Daftar Coba-Coba';
+//     public function index () {
+//         $data['judul'] = 'Daftar Coba-Coba';
 
-        $this->load->view('_templates/header', $data);
-        $this->load->view('coba/index', $data);
-        $this->load->view('_templates/footer');
-    }
+//         $this->load->view('_templates/header', $data);
+//         $this->load->view('coba/index', $data);
+//         $this->load->view('_templates/footer');
+//     }
 
-    public function getKriteria () {
-        $list = $this->Coba_Model->getDataTables();
-        $data = [];
-        $no = $this->input->post('start');
+//     public function getKriteria () {
+//         $list = $this->Coba_Model->getDataTables();
+//         $data = [];
+//         $no = $this->input->post('start');
 
-        foreach ($list as $coba) {
-            $row = [];
-            $row[] = ++$no;
-            $row[] = $coba->kode;
-            $row[] = $coba->nama;
-            $row[] = $coba->bobot;
-            $row[] = $coba->normalisasi;
+//         foreach ($list as $coba) {
+//             $row = [];
+//             $row[] = ++$no;
+//             $row[] = $coba->kode;
+//             $row[] = $coba->nama;
+//             $row[] = $coba->bobot;
+//             $row[] = $coba->normalisasi;
             
-            //add action in table
-            $row[] = '
-            <div class="d-sm-flex bd-highlight align-content-center justify-content-around">
-            <button type="button" id="'. $coba->kode . '"class="btn btn-sm updateCoba">
-            <i class="fas fa-pencil-alt" style="color:green"></i>
-            </buton>
+//             //add action in table
+//             $row[] = '
+//             <div class="d-sm-flex bd-highlight align-content-center justify-content-around">
+//             <button type="button" id="'. $coba->kode . '"class="btn btn-sm updateCoba">
+//             <i class="fas fa-pencil-alt" style="color:green"></i>
+//             </buton>
            
-            <button type="button" id="' . $coba->kode . '"class="btn btn-sm deleteCoba">
-            <i class="fas fa-trash" style="color:red"></i>
-            </button>
-            </div>
-            ';
+//             <button type="button" id="' . $coba->kode . '"class="btn btn-sm deleteCoba">
+//             <i class="fas fa-trash" style="color:red"></i>
+//             </button>
+//             </div>
+//             ';
 
-            $data[] = $row;
-        }
+//             $data[] = $row;
+//         }
 
-        $output = [
-            "draw" => $this->input->post('draw'),
-            "recordsTotal" => $this->Coba_Model->countAll(),
-            "recordsFiltered" => $this->Coba_Model->countFiltered(),
-            "data" => $data,
-        ];
+//         $output = [
+//             "draw" => $this->input->post('draw'),
+//             "recordsTotal" => $this->Coba_Model->countAll(),
+//             "recordsFiltered" => $this->Coba_Model->countFiltered(),
+//             "data" => $data,
+//         ];
     
-        echo json_encode($output);
-    }
+//         echo json_encode($output);
+//     }
 
-    public function getKriteriaById () {
-        $data = $this->Coba_Model->getKriteriaById($this->input->post('id'));
-        echo json_encode($data);
-    }
+//     public function getKriteriaById () {
+//         $data = $this->Coba_Model->getKriteriaById($this->input->post('id'));
+//         echo json_encode($data);
+//     }
 
-    public function tambahKriteria () {
-        $rules = [
-            [
-                'field' => 'kodeKriteria',
-                'label' => 'Kode Kriteria',
-                'rules' => 'required'
-            ],
-            [
-                'field' => 'kriteria',
-                'label' => 'Kriteria',
-                'rules' => 'required'
-            ],
-            [
-                'field' => 'bobot',
-                'label' => 'Bobot Kriteria',
-                'rules' => 'required|numeric'
-            ]
-        ];
+//     public function tambahKriteria () {
+//         $rules = [
+//             [
+//                 'field' => 'kodeKriteria',
+//                 'label' => 'Kode Kriteria',
+//                 'rules' => 'required'
+//             ],
+//             [
+//                 'field' => 'kriteria',
+//                 'label' => 'Kriteria',
+//                 'rules' => 'required'
+//             ],
+//             [
+//                 'field' => 'bobot',
+//                 'label' => 'Bobot Kriteria',
+//                 'rules' => 'required|numeric'
+//             ]
+//         ];
 
-        $this->form_validation->set_rules($rules);
+//         $this->form_validation->set_rules($rules);
 
-        if ($this->form_validation->run() == FALSE) {
-            $data = [
-                'kodeKriteria' => form_error('kodeKriteria'),
-                'kriteria' => form_error('kriteria'),
-                'bobot' => form_error('bobot')
-            ];   
+//         if ($this->form_validation->run() == FALSE) {
+//             $data = [
+//                 'kodeKriteria' => form_error('kodeKriteria'),
+//                 'kriteria' => form_error('kriteria'),
+//                 'bobot' => form_error('bobot')
+//             ];   
 
-            echo json_encode($data);
-        } else {
-            $this->Coba_Model->tambahKriteria();
-            $this->Coba_Model->hitungNormalisasi();
-            echo json_encode(array("status" => TRUE));
-        }
+//             echo json_encode($data);
+//         } else {
+//             $this->Coba_Model->tambahKriteria();
+//             $this->Coba_Model->hitungNormalisasi();
+//             echo json_encode(array("status" => TRUE));
+//         }
 
-    }
+//     }
 
-    public function ubahKriteria () {
-        $rules = [
-            [
-                'field' => 'kodeKriteriaEdit',
-                'label' => 'Kode Kriteria',
-                'rules' => 'required'
-            ],
-            [
-                'field' => 'kriteriaEdit',
-                'label' => 'Kriteria',
-                'rules' => 'required'
-            ],
-            [
-                'field' => 'bobotEdit',
-                'label' => 'Bobot Kriteria',
-                'rules' => 'required|numeric'
-            ]
-        ];
+//     public function ubahKriteria () {
+//         $rules = [
+//             [
+//                 'field' => 'kodeKriteriaEdit',
+//                 'label' => 'Kode Kriteria',
+//                 'rules' => 'required'
+//             ],
+//             [
+//                 'field' => 'kriteriaEdit',
+//                 'label' => 'Kriteria',
+//                 'rules' => 'required'
+//             ],
+//             [
+//                 'field' => 'bobotEdit',
+//                 'label' => 'Bobot Kriteria',
+//                 'rules' => 'required|numeric'
+//             ]
+//         ];
 
-        $this->form_validation->set_rules($rules);
+//         $this->form_validation->set_rules($rules);
 
-        if ($this->form_validation->run() == FALSE) {
-            $data = [
-                'kodeKriteriaEdit' => form_error('kodeKriteriaEdit'),
-                'kriteriaEdit' => form_error('kriteriaEdit'),
-                'bobotEdit' => form_error('bobotEdit')
-            ];   
+//         if ($this->form_validation->run() == FALSE) {
+//             $data = [
+//                 'kodeKriteriaEdit' => form_error('kodeKriteriaEdit'),
+//                 'kriteriaEdit' => form_error('kriteriaEdit'),
+//                 'bobotEdit' => form_error('bobotEdit')
+//             ];   
 
-            echo json_encode($data);
-        } else {
-            $this->Coba_Model->ubahKriteria();
-            $this->Coba_Model->hitungNormalisasi();
-            echo json_encode(array("status" => TRUE));
-        }
-    }
+//             echo json_encode($data);
+//         } else {
+//             $this->Coba_Model->ubahKriteria();
+//             $this->Coba_Model->hitungNormalisasi();
+//             echo json_encode(array("status" => TRUE));
+//         }
+//     }
 
-    public function hapusKriteria () {
-        $this->Coba_Model->hapusKriteria($this->input->post('id'));
-        $this->Coba_Model->hitungNormalisasi();
-        echo json_encode(["status" => TRUE]);
-    }
-}
-
-?>
-
-
-
-
+//     public function hapusKriteria () {
+//         $this->Coba_Model->hapusKriteria($this->input->post('id'));
+//         $this->Coba_Model->hitungNormalisasi();
+//         echo json_encode(["status" => TRUE]);
+//     }
+// }
 
 // google chart
 
@@ -250,3 +244,5 @@ class Coba extends CI_Controller {
 //     }
 //   })
 // })
+
+?>
