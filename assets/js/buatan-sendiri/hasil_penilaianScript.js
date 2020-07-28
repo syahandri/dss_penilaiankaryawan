@@ -48,7 +48,7 @@ $(function () {
 
     // change element input to datepicker
     $('#datesearchhasil').datepicker({
-        dateFormat: "yy-mm-dd",
+        dateFormat: "dd MM yy",
         showAnim: "slideDown",
         gotoCurrent: true,
         showOn: "button",

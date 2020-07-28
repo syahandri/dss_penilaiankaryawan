@@ -152,9 +152,9 @@ $(function () {
 				success: function (data) {
 
 					if (!data.status) {
-						$('.kodeKriteria').html(data.kodeKriteriaEdit);
-						$('.kriteria').html(data.kriteriaEdit);
-						$('.bobot').html(data.bobotEdit);
+						$('.kodeKriteria').html(data.kodeKriteria);
+						$('.kriteria').html(data.kriteria);
+						$('.bobot').html(data.bobot);
 					} else {
 						Swal.fire({
 							title: 'Data Kriteria',

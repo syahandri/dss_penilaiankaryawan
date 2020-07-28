@@ -152,6 +152,6 @@ class Penilaian extends CI_Controller {
 
     public function hapusPenilaian () {
         $this->Penilaian_Model->hapusPenilaian($this->input->post('nip_nilai'), $this->input->post('tgl_penilaian'));
-        echo json_encode(["status" => TRUE]);
+        echo json_encode(array("status" => TRUE));
     }
 }

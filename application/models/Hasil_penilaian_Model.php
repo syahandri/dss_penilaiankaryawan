@@ -6,8 +6,8 @@ class Hasil_penilaian_Model extends CI_Model {
     // variabel untuk keperluan pagination jquery datatable
     var $column_order  = [null, 'tgl_penilaian', 'nip', 'nama_karyawan', 'nilai_alternatif_MPE'];
     var $column_search = ['tgl_penilaian', 'nip', 'nama_karyawan', 'nilai_alternatif_MPE'];
-    var $order = ['tgl_penilaian' => 'desc']; // order 1st
-    var $order_second = ['nilai_alternatif_MPE' => 'desc']; // order 2nd
+    var $order = ['id' => 'desc']; // order 1st
+    // var $order_second = ['nilai_alternatif_MPE' => 'desc']; // order 2nd
 
       // PAGINATION USING JQUERY DATA TABLES
       private function _get_datatables_query () {
@@ -32,11 +32,11 @@ class Hasil_penilaian_Model extends CI_Model {
 
         if ($this->input->post('order')) {
             $this->db->order_by($this->column_order[$this->input->post('order')[0]['column']], $this->input->post('order')[0]['dir']);
-        } else if (isset($this->order) && isset($this->order_second)) {
+        } else if (isset($this->order)) { //&& isset($this->order_second)
             $order = $this->order;
-            $order_second = $this->order_second;
+            // $order_second = $this->order_second;
             $this->db->order_by(key($order), $order[key($order)]);
-            $this->db->order_by(key($order_second), $order_second[key($order_second)]);
+            // $this->db->order_by(key($order_second), $order_second[key($order_second)]);
         }
     }
 

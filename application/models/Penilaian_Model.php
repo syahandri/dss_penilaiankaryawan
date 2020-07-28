@@ -5,9 +5,9 @@ class Penilaian_Model extends CI_Model {
     // variabel untuk keperluan pagination jquery datatable
     var $column_order  = [null, 'tgl_penilaian', 'nip', 'nama_karyawan', 'kriteria', 'subkriteria', null];
     var $column_search = ['tgl_penilaian', 'nip', 'nama_karyawan', 'kriteria', 'subkriteria'];
-    var $order = ['tgl_penilaian' => 'desc']; // order 1st
-    var $order_second = ['nip' => 'asc']; // order 2nd
-    var $order_third = ['kriteria' => 'asc']; // order 3rd
+    var $order = ['id' => 'desc']; // order 1st
+    // var $order_second = ['nama_karyawan' => 'asc']; // order 2nd
+    // var $order_third = ['kriteria' => 'asc']; // order 3rd
 
       // PAGINATION USING JQUERY DATA TABLES
       private function _get_datatables_query () {
@@ -34,13 +34,13 @@ class Penilaian_Model extends CI_Model {
 
         if ($this->input->post('order')) {
             $this->db->order_by($this->column_order[$this->input->post('order')[0]['column']], $this->input->post('order')[0]['dir']);
-        } else if (isset($this->order) && isset($this->order_second) && isset($this->order_third)) {
+        } else if (isset($this->order)) { //&& isset($this->order_second) && isset($this->order_third)
             $order = $this->order;
-            $order_second = $this->order_second;
-            $order_third = $this->order_third;
+            // $order_second = $this->order_second;
+            // $order_third = $this->order_third;
             $this->db->order_by(key($order), $order[key($order)]);
-            $this->db->order_by(key($order_second), $order_second[key($order_second)]);
-            $this->db->order_by(key($order_third), $order_third[key($order_third)]);
+            // $this->db->order_by(key($order_second), $order_second[key($order_second)]);
+            // $this->db->order_by(key($order_third), $order_third[key($order_third)]);
         }
     }
 
@@ -98,6 +98,7 @@ class Penilaian_Model extends CI_Model {
     }
 
     public function hapusPenilaian ($nip, $tgl_penilaian) {
+        // $tanggal = date('Y-m-d',strtotime($tgl_penilaian));
         $this->db->delete('tblpenilaian', ['nip' => $nip, 'tgl_penilaian' => $tgl_penilaian]);
     }
 }

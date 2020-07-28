@@ -54,7 +54,7 @@
                 <div class="card-header bg-primary" style="color: white"><i class="fas fa-fw fa-chart-bar"></i>
                     <span class="font-weight-bold">Grafik Hasil Penilaian</span>
                     <div class="col-md-5 float-right">
-                        <select class="form-control" id="filterTgl" name="filterTgl"></select>
+                        <select class="form-control" id="filterTgl" name="filterTgl" style="width:150px"></select>
                     </div>
                 </div>
                 <div class="card-body">

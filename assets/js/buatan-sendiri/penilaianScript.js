@@ -35,7 +35,7 @@ $(function () {
 
 	// change element input to datepicker
 	$('#datesearch').datepicker({
-		dateFormat: "yy-mm-dd",
+		dateFormat: "dd MM yy",
 		showAnim: "slideDown",
 		gotoCurrent: true,
 		showOn: "button",
@@ -168,6 +168,9 @@ $(function () {
 
 		let nip_nilai = $(this).attr('id');
 		let tgl_penilaian = $(this).attr('name');
+
+		tgl_penilaian = new Date(tgl_penilaian)
+		tgl_penilaian = tgl_penilaian.getFullYear() + "-" + (tgl_penilaian.getMonth() + 1) + "-" + tgl_penilaian.getDate()
 
 		Swal.fire({
 			title: 'Apakah anda yakin',
