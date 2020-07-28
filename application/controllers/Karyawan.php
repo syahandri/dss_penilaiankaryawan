@@ -76,7 +76,7 @@ class Karyawan extends CI_Controller
             [
                 'field' => 'nip',
                 'label' => 'NIP',
-                'rules' => 'required|numeric|is_unique[tblkaryawan.nip]'
+                'rules' => 'required|numeric|is_unique[tblkaryawan.nip]|min_length[20]'
             ],
             [
                 'field' => 'nama',
