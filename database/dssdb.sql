@@ -2,11 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 08 Jul 2020 pada 13.34
--- Versi server: 10.4.11-MariaDB
--- Versi PHP: 7.4.6
--- Tinggal import
+-- Host: localhost
+-- Waktu pembuatan: 29 Jul 2020 pada 10.46
+-- Versi server: 10.4.13-MariaDB
+-- Versi PHP: 7.4.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -47,7 +46,8 @@ CREATE TABLE `detail_penilaian` (
 -- (Lihat di bawah untuk tampilan aktual)
 --
 CREATE TABLE `nilaimpe` (
-`tgl_penilaian` date
+`id` int(11)
+,`tgl_penilaian` date
 ,`nip` bigint(20)
 ,`nama_karyawan` varchar(30)
 ,`nilai_mpe` double
@@ -60,7 +60,8 @@ CREATE TABLE `nilaimpe` (
 -- (Lihat di bawah untuk tampilan aktual)
 --
 CREATE TABLE `nilai_alternatifmpe` (
-`tgl_penilaian` date
+`id` int(11)
+,`tgl_penilaian` date
 ,`nip` bigint(20)
 ,`nama_karyawan` varchar(30)
 ,`nilai_alternatif_MPE` double(20,3)
@@ -241,7 +242,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `nilaimpe`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `nilaimpe`  AS  select `detail_penilaian`.`tgl_penilaian` AS `tgl_penilaian`,`detail_penilaian`.`nip` AS `nip`,`detail_penilaian`.`nama_karyawan` AS `nama_karyawan`,sum(`detail_penilaian`.`hasil_penilaian`) AS `nilai_mpe` from `detail_penilaian` group by `detail_penilaian`.`tgl_penilaian`,`detail_penilaian`.`nip` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `nilaimpe`  AS  select `detail_penilaian`.`id` AS `id`,`detail_penilaian`.`tgl_penilaian` AS `tgl_penilaian`,`detail_penilaian`.`nip` AS `nip`,`detail_penilaian`.`nama_karyawan` AS `nama_karyawan`,sum(`detail_penilaian`.`hasil_penilaian`) AS `nilai_mpe` from `detail_penilaian` group by `detail_penilaian`.`tgl_penilaian`,`detail_penilaian`.`nip` ;
 
 -- --------------------------------------------------------
 
@@ -250,7 +251,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `nilai_alternatifmpe`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `nilai_alternatifmpe`  AS  select `nilaimpe`.`tgl_penilaian` AS `tgl_penilaian`,`nilaimpe`.`nip` AS `nip`,`nilaimpe`.`nama_karyawan` AS `nama_karyawan`,round(`nilaimpe`.`nilai_mpe` / `totalmpe`.`total_mpe`,3) AS `nilai_alternatif_MPE` from (`nilaimpe` join `totalmpe` on(`nilaimpe`.`tgl_penilaian` = `totalmpe`.`tgl_penilaian`)) group by `nilaimpe`.`tgl_penilaian`,`nilaimpe`.`nip` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `nilai_alternatifmpe`  AS  select `nilaimpe`.`id` AS `id`,`nilaimpe`.`tgl_penilaian` AS `tgl_penilaian`,`nilaimpe`.`nip` AS `nip`,`nilaimpe`.`nama_karyawan` AS `nama_karyawan`,round(`nilaimpe`.`nilai_mpe` / `totalmpe`.`total_mpe`,3) AS `nilai_alternatif_MPE` from (`nilaimpe` join `totalmpe` on(`nilaimpe`.`tgl_penilaian` = `totalmpe`.`tgl_penilaian`)) group by `nilaimpe`.`tgl_penilaian`,`nilaimpe`.`nip` ;
 
 -- --------------------------------------------------------
 
@@ -309,7 +310,7 @@ ALTER TABLE `tblsubkriteria`
 -- AUTO_INCREMENT untuk tabel `tblpenilaian`
 --
 ALTER TABLE `tblpenilaian`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
