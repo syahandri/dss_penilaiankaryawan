@@ -6,6 +6,7 @@
 -- Waktu pembuatan: 08 Jul 2020 pada 13.34
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.6
+-- Tinggal import
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
